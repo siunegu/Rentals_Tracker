@@ -1,0 +1,30 @@
+<nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">Landlords</a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li><%= link_to 'Home', root_path %></li>
+      <li><%= link_to 'About', about_path %></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if landlord_signed_in? %>
+        <li><%= link_to "Sign Out", destroy_landlord_session_path, method: :delete %></li>
+        <li><%= link_to "Edit Profile", edit_landlord_registration_path %></li>
+      <% elsif !landlord_signed_in? || !tenant_signed_in? %>
+        <li><%= link_to "My Properties", new_landlord_session_path %></li>
+        <li><%= link_to "Sign In as Landlord", new_landlord_session_path %></li>
+        <li><%= link_to "Sign In as Tenant", new_tenant_session_path %></li>        
+      <% end %>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>

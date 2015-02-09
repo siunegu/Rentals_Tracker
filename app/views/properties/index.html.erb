@@ -1,0 +1,26 @@
+
+<h1>My Properties</h1>
+
+
+
+<div class="container">
+  
+    <% @properties.each do |property, landlord| %>
+      <div class="col-md-12">
+        <div class="caption">
+              <h3><%= property.address %></h3>
+              <p><%= number_to_currency(property.price) %></p>
+              <p><%= property.description %></p>
+
+          <div><%= link_to 'Show', property, class: "btn btn-link" %></div>
+          <!-- <div><%= link_to 'Edit', edit_property_path(property), class: "btn btn-link" %></div> -->
+          <div><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></div>
+        </div>
+      </div>
+    <% end %>
+  
+</div>
+
+<br>
+
+<%= link_to 'New Listing', new_property_path, class: "btn btn-default" %>
