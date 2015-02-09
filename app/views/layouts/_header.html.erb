@@ -14,17 +14,22 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
       <li><%= link_to 'Home', root_path %></li>
-      <li><%= link_to 'About', about_path %></li>
+      <li><%= link_to "All Properties", properties_path %></li> 
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <% if landlord_signed_in? %>
+      <% if landlord_signed_in? %>  
+        <li class="navbar-welcome-user">Welcome <%= current_landlord.name %>!</li>           
+        <li><%= link_to "My Properties", landlord_my_properties_path %></li>  
         <li><%= link_to "Sign Out", destroy_landlord_session_path, method: :delete %></li>
         <li><%= link_to "Edit Profile", edit_landlord_registration_path %></li>
-      <% elsif !landlord_signed_in? || !tenant_signed_in? %>
-        <li><%= link_to "My Properties", new_landlord_session_path %></li>
+      <% elsif tenant_signed_in? %>    
+        <li><%= link_to "My Properties", tenant_my_properties_path %></li>  
+        <li><%= link_to "Sign Out", destroy_tenant_session_path, method: :delete %></li>
+        <li><%= link_to "Edit Profile", edit_tenant_registration_path %></li>
+      <% elsif !landlord_signed_in? || !tenant_signed_in? %>        
         <li><%= link_to "Sign In as Landlord", new_landlord_session_path %></li>
-        <li><%= link_to "Sign In as Tenant", new_tenant_session_path %></li>        
-      <% end %>
+        <li><%= link_to "Sign In as Tenant", new_tenant_session_path %></li>    
+      <% end %>        
     </ul>
   </div><!-- /.navbar-collapse -->
 </nav>

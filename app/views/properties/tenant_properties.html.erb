@@ -1,0 +1,16 @@
+
+<h1>My Abode</h1>
+
+
+
+<div class="container">
+  <% if @property %>
+    <%= @property.address %>  
+  <% else %>
+    <p>You do not have a property, get a job!</p>
+  <% end %>
+</div>
+
+<br>
+
+<%= link_to 'New Listing', new_property_path, class: "btn btn-default" %>

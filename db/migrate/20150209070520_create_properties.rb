@@ -6,7 +6,8 @@ class CreateProperties < ActiveRecord::Migration
     	t.string :city
     	t.string :state
     	t.integer :price
-    	t.references :landlord, index: true
+      t.references :landlord, index: true
+    	t.references :tenant, index: true
       t.timestamps null: false
     end
     add_foreign_key :properties, :landlords

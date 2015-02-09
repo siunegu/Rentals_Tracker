@@ -1,0 +1,22 @@
+
+<h1>All Properties</h1>
+
+
+
+<div class="container">
+  
+    <% @properties.each do |property| %>
+      <div class="col-md-12">
+        <div class="caption">
+        <%= link_to(property) do %>
+              <h3><%= property.address %></h3>
+              <p><%= number_to_currency(property.price) %> per month.</p>
+              <p><%= property.description %></p>         
+        <% end %>
+        </div>
+      </div>
+    <% end %>
+  
+</div>
+
+<br>

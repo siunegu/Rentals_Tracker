@@ -1,9 +1,20 @@
 class PropertiesController < ApplicationController
 	before_action :find_property, only: [:show, :destroy]
-	before_filter :authenticate_landlord!
+	before_filter :authenticate_landlord!, only: [:new, :create, :destroy]
+
+	def landlord_properties
+		@properties = current_landlord.properties.order("created_at DESC")
+	end	
+
+	def tenant_properties
+		@property = current_tenant.property
+	end
 
 	def index
-		@properties = Property.all.where(landlord_id: current_landlord.id).order("created_at DESC")
+		@properties = Property.all
+	end
+
+	def show
 	end
 
 	def new
@@ -21,7 +32,7 @@ class PropertiesController < ApplicationController
 private
 	
   def find_property
-    @order = Order.find(params[:id])
+    @property = Property.find(params[:id])
   end
 
 	def property_params

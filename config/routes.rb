@@ -9,6 +9,8 @@
 #                              PATCH  /properties/:id(.:format)          properties#update
 #                              PUT    /properties/:id(.:format)          properties#update
 #                              DELETE /properties/:id(.:format)          properties#destroy
+#       landlord_my_properties GET    /landlord_my_properties(.:format)  properties#landlord_properties
+#         tenant_my_properties GET    /tenant_my_properties(.:format)    properties#tenant_properties
 #           new_tenant_session GET    /tenants/sign_in(.:format)         devise/sessions#new
 #               tenant_session POST   /tenants/sign_in(.:format)         devise/sessions#create
 #       destroy_tenant_session DELETE /tenants/sign_out(.:format)        devise/sessions#destroy
@@ -39,17 +41,19 @@
 #                              PATCH  /landlords(.:format)               devise/registrations#update
 #                              PUT    /landlords(.:format)               devise/registrations#update
 #                              DELETE /landlords(.:format)               devise/registrations#destroy
-#                        about GET    /about(.:format)                   pages#about
+#                         home GET    /home(.:format)                    pages#home
 #                         root GET    /                                  pages#home
 #
 
 Rails.application.routes.draw do
 
   resources :properties
-
+  get 'landlord_my_properties' => 'properties#landlord_properties'
+  get 'tenant_my_properties' => 'properties#tenant_properties'
+  
   devise_for :tenants
   devise_for :landlords
 
-  get 'about' => 'pages#about'
+  get 'home' => 'pages#home'
   root 'pages#home'
 end
