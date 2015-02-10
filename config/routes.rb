@@ -46,6 +46,8 @@
 #
 
 Rails.application.routes.draw do
+	resources :subscriptions
+	resources :leases
 
   resources :properties
   get 'landlord_my_properties' => 'properties#landlord_properties'

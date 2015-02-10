@@ -30,7 +30,12 @@ class DeviseCreateLandlords < ActiveRecord::Migration
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-
+      
+      t.string   :stripe_customer_id
+      t.string   :stripe_id
+      t.string   :stripe_access_key
+      t.string   :stripe_publishable_key
+      t.string   :stripe_refresh_token
 
       t.timestamps
     end

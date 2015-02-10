@@ -14,7 +14,7 @@ gem 'bootstrap-sass'
 
 gem 'devise'
 
-# gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'stripe'
 # gem 'omniauth-stripe-connect'
 # gem 'stripe_event'
 

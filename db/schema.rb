@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150209232928) do
+ActiveRecord::Schema.define(version: 20150210062504) do
+
+  create_table "credit_cards", force: :cascade do |t|
+    t.string   "stripe_id"
+    t.integer  "tenant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "landlords", force: :cascade do |t|
     t.string   "name"
@@ -25,6 +32,11 @@ ActiveRecord::Schema.define(version: 20150209232928) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "stripe_customer_id"
+    t.string   "stripe_id"
+    t.string   "stripe_access_key"
+    t.string   "stripe_publishable_key"
+    t.string   "stripe_refresh_token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -37,6 +49,25 @@ ActiveRecord::Schema.define(version: 20150209232928) do
     t.datetime "updated_at",  null: false
     t.integer  "tenant_id"
     t.integer  "property_id"
+    t.string   "stripe_id"
+    t.string   "name"
+    t.string   "description"
+    t.string   "amount"
+    t.string   "integer"
+    t.string   "interval"
+    t.string   "published"
+    t.string   "boolean"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string   "stripe_id"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "amount"
+    t.string   "interval"
+    t.boolean  "published"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "properties", force: :cascade do |t|
@@ -52,6 +83,17 @@ ActiveRecord::Schema.define(version: 20150209232928) do
 
   add_index "properties", ["landlord_id"], name: "index_properties_on_landlord_id"
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "plan_id"
+    t.string   "stripe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "subscriptions", ["plan_id"], name: "index_subscriptions_on_plan_id"
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id"
+
   create_table "tenants", force: :cascade do |t|
     t.string   "name"
     t.string   "email",                  default: "", null: false
@@ -66,6 +108,7 @@ ActiveRecord::Schema.define(version: 20150209232928) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "stripe_id"
   end
 
   add_index "tenants", ["email"], name: "index_tenants_on_email", unique: true
