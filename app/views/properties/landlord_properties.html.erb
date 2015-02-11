@@ -1,9 +1,8 @@
-
 <h1>My Properties</h1>
 
 
 
-<div class="container">
+<div class="container show-property">
   
     <% @properties.each do |property, landlord| %>
       <div class="col-md-12">
@@ -11,11 +10,7 @@
         <%= link_to(property) do %>
               <h3><%= property.address %></h3>
               <p><%= number_to_currency(property.price) %> per month.</p>
-              <p><%= property.description %></p>
-          
-          <div><%= link_to 'Show', property, class: "btn btn-link" %></div>
-          <div><%= link_to 'Edit', edit_property_path(property), class: "btn btn-link" %></div>
-          <div><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></div>
+              <p><%= property.description %></p>        
         <% end %>
         </div>
       </div>

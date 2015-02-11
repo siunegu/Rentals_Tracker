@@ -24,7 +24,7 @@ class Tenant < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_one :lease
+  has_one :lease, inverse_of: :tenant
   has_one :property, through: :lease, dependent: :destroy
   has_one :landlord, through: :property     
 end

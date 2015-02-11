@@ -1,24 +1,420 @@
 /*******************************
-           Overrides
+           Imports
 *******************************/
 
-.ui.primary.button {
-  box-shadow:
-    0px 0px 0px 1px #3B88C3 inset,
-    0 2px 0 rgba(255, 255, 255, 0.15) inset
-  ;
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+/*******************************
+           Global
+*******************************/
+
+html{
+  margin-bottom: 15vh !important;
 }
-.ui.primary.button > .icon {
-  color: #FFFFFF;
+
+body {
+  background-color: #eef0f2 !important;
 }
 
 /*******************************
-           Custom 
+           Typography
 *******************************/
 
-.navbar-welcome-user {
-	position: relative;
-	top: 15px;
-	font-weight: 900;
+h1, h2 {
+  margin-bottom: 40px !important;
+  font-family: 'Oxygen', sans-serif;
+  font-weight: 700;
 }
 
+h1 {
+  font-size: 3em !important;
+}
+
+a {
+  color: #563d7c;
+}
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+
+/*******************************
+           Navbar
+*******************************/
+
+.navbar-brand {
+  color: red !important;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: #563d7c !important;
+}
+
+.navbar-default {
+  padding: 20px !important;
+  background-color: #ffffff !important;
+  margin-bottom: 60px !important;
+  border: 0;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #323333 !important;  
+}  
+
+.navbar-welcome-user {
+  position: relative;
+  top: 15px;
+  right: 20px;
+  font-weight: 900;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-welcome-user{
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+
+.fa-big-icon {
+  font-size: 1.9em !important;
+  transition: all 0.3s ease;
+}
+
+.fa-big-icon:hover {
+  color: #563d7c;
+}
+/*******************************
+           Buttons 
+*******************************/
+
+.btn-submit {
+  font-weight: 400;
+  margin: 35px auto;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  height: 30px;
+  text-decoration: none;
+
+  display: block;
+  position: relative;
+  padding: 0 30px;
+  height: 40px;
+
+  background: #4cae4c;
+
+
+  font-size: 16px;
+  line-height: 30px;
+  color: white;
+  font-weight: bold;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;  
+
+  transition: all 0.5s ease;
+  
+}
+
+.btn-submit:hover {
+  color: #f7f7f7 !important;
+  background: #1275FF !important;
+  border: 1px solid rgba(0, 0, 0, 0.4);  
+}
+
+.btn-blue {
+  font-weight: 400;
+  margin-bottom: 1px;
+  -webkit-font-smoothing: antialiased;
+  height: 30px;
+  text-decoration: none;
+
+  display: block;
+  position: relative;
+  padding: 0 30px;
+  height: 40px;
+
+  background: #12a3ff;
+
+
+  font-size: 16px;
+  line-height: 30px;
+  color: white;
+  font-weight: bold;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;  
+
+  transition: all 0.5s ease;
+  
+}
+
+.btn-blue:hover {
+  color: #f7f7f7 !important;
+  background: #1275FF !important;
+  border: 1px solid rgba(0, 0, 0, 0.4);  
+}
+
+
+.btn-red {
+  font-weight: 400;
+  margin-bottom: 1px;
+  -webkit-font-smoothing: antialiased;
+  height: 30px;
+  text-decoration: none;
+
+  display: block;
+  position: relative;
+  padding: 0 30px;
+  height: 40px;
+
+  background: #d9534f;
+
+
+  font-size: 16px;
+  line-height: 30px;
+  color: white;
+  font-weight: bold;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;  
+
+  transition: all 0.5s ease;
+  
+}
+
+.btn-red:hover {
+  color: #f7f7f7 !important;
+  background: #d43f3a !important;
+  border: 1px solid rgba(0, 0, 0, 0.4);  
+}
+
+.btn-form {
+  width: 100%;
+  display: inline-block;
+  margin: 30px auto;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;  
+  font-weight: 400;
+
+  -webkit-font-smoothing: antialiased;
+  height: 30px;
+  text-decoration: none;
+
+  display: block;
+  position: relative;
+  padding: 8px 12px 0px !important;
+  height: 40px;
+
+  background: #563d7c;
+
+
+  font-size: 16px;
+  line-height: 30px;
+  color: white;
+  font-weight: bold;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;  
+
+  transition: all 0.5s ease;  
+}
+
+.btn-form:hover {
+  color: #EEE !important;
+  background-color: #3F2666
+}
+
+.btn-kaboom {
+  display: inline-block;
+  margin: 35px auto;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;  
+  font-weight: 400;
+
+  -webkit-font-smoothing: antialiased;
+  height: 30px;
+  text-decoration: none;
+
+  display: block;
+  position: relative;
+  padding: 8px 12px 0px !important;
+  height: 40px;
+
+  background: #d9534f;
+
+
+  font-size: 16px;
+  line-height: 30px;
+  color: white;
+  font-weight: bold;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;  
+
+  transition: all 0.5s ease;  
+}
+
+.btn-kaboom:hover {
+  color: #EEE !important;
+  background-color: #d43f3a
+}
+
+.fancy-btn
+{
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  color: #0C5;
+
+  font-size: 24px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  
+  margin: 5em auto;
+  
+  position: absolute; 
+  top:0; right:0; bottom:0; left:0;
+  
+  padding: 20px 0;
+  width: 220px;
+  height:30px;
+
+  background: #0D6;
+  border: 1px solid #0D6;
+  color: #FFF;
+  overflow: hidden;
+  
+  transition: all 0.5s;
+}
+
+.fancy-btn:hover, .fancy-btn:active 
+{
+  text-decoration: none;
+  color: #0C5;
+  border-color: #0C5;
+  background: #FFF;
+}
+
+.fancy-btn span 
+{
+  display: inline-block;
+  position: relative;
+  padding-right: 0;
+  
+  transition: padding-right 0.5s;
+}
+
+.fancy-btn span:after 
+{
+  content: ' ';  
+  position: absolute;
+  top: 0;
+  right: -18px;
+  opacity: 0;
+  width: 10px;
+  height: 10px;
+  margin-top: -10px;
+
+  background: rgba(0, 0, 0, 0);
+  border: 3px solid #FFF;
+  border-top: none;
+  border-right: none;
+
+  transition: opacity 0.5s, top 0.5s, right 0.5s;
+  transform: rotate(-45deg);
+}
+
+.fancy-btn:hover span, .fancy-btn:active span 
+{
+  padding-right: 30px;
+}
+
+.fancy-btn:hover span:after, .fancy-btn:active span:after 
+{
+  transition: opacity 0.5s, top 0.5s, right 0.5s;
+  opacity: 1;
+  border-color: #0C5;
+  right: 0;
+  top: 50%;
+}
+
+.new-lease {
+  color: #4cae4c;
+}
+
+
+/*******************************
+         Show-Property
+*******************************/
+
+.show-property {
+  background-color: #fff;
+  padding: 35px 45px;
+
+  border: 1px solid rgba(0, 0, 0, 0.1);  
+
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;    
+}

@@ -1,30 +1,57 @@
+<div class="container show-property">
+  <div class="col-md-8">
+    <p>
+      <h1><%= @property.address %></h1>
+    </p>
 
-<p>
-  <h3><%= @property.address %></h3>
-</p>
+    <p>
+      <strong>City:</strong>
+      <%= @property.city %>
+    </p>
 
-<p>
-  <strong>City:</strong>
-  <%= @property.city %>
-</p>
+    <p>
+      <strong>State:</strong>
+      <%= @property.state %>
+    </p>
 
-<p>
-  <strong>State:</strong>
-  <%= @property.state %>
-</p>
+    <p>
+      <strong>Description:</strong>
+      <%= @property.description %>
+    </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @property.description %>
-</p>
+    <p>
+      <strong>Price:</strong>
+      	<p><%= @property.price %> per. month</p>
+      </%>
+    </p>
 
-<p>
-  <strong>Price:</strong>
-  	<p><%= @property.price %> per. month</p>
-  </%>
-</p>
+    <% if current_landlord == @property.landlord %>
+      <%= link_to 'EDIT', edit_property_path(@property), class: "btn btn-form" %>       
+    <% end %>
+  </div>
 
-<% if current_landlord == @property.landlord %>
-  <%= link_to 'Edit', edit_property_path(@property), class: "btn btn-link" %> |
-<% end %>
-<%= link_to 'Back', properties_path, class: "btn btn-link" %>
+  <div class="col-md-4">
+    <h3>
+      This Property's Leases
+      <%= link_to new_property_lease_path(@property) do %>
+        <i class="fa fa-plus-circle new-lease"></i>
+      <% end %>
+    </h3>
+    
+      <% @leases.each do |lease, tenant| %>
+        <% if @property.leases && lease.tenant %>
+          <p><%= lease.tenant.name %>'s Lease Agreement</p>
+          <p><%= lease.amount %> rent per. Month</p>
+          <p>Other Info Ipsum</p>
+          <p>Other Info Ipsum</p>
+          <p>Other Info Ipsum</p>
+          <p>Other Info Ipsum</p>
+          <p>Other Info Ipsum</p>
+        <% else %>
+          <p>You have No Lease Agreements to List.</p>
+        <% end %>
+      <% end %>    
+
+  </div>
+
+</div>

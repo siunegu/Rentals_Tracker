@@ -1,13 +1,13 @@
-<h1>My Abode</h1>
+<h1>My Place</h1>
+<div class="container show-property">
+	
 
-<div class="container">
-  <% if @property %>
-    <%= @property.address %>  
-  <% else %>
-    <p>You do not have a property, get a job!</p>
-  <% end %>
+	<div class="container">
+	  <% if @property %>
+	    <h3><%= @property.address %></h3>
+	    <p><%= number_to_currency(@property.price) %> per month.</p>
+	  <% else %>
+	    <p>You do not have a property, get a job!</p>
+	  <% end %>
+	</div>
 </div>
-
-<br>
-
-<%= link_to 'New Listing', new_property_path, class: "btn btn-default" %>

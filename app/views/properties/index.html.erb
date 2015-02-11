@@ -1,5 +1,5 @@
 
-<h1>My Properties</h1>
+<h1>Browse All Properties</h1>
 
 
 
@@ -12,10 +12,6 @@
               <h3><%= property.address %></h3>
               <p><%= number_to_currency(property.price) %> per month.</p>
               <p><%= property.description %></p>
-          
-          <div><%= link_to 'Show', property, class: "btn btn-link" %></div>
-          <div><%= link_to 'Edit', edit_property_path(property), class: "btn btn-link" %></div>
-          <div><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></div>
         <% end %>
         </div>
       </div>
@@ -23,6 +19,5 @@
   
 </div>
 
-<br>
 
-<%= link_to 'New Listing', new_property_path, class: "btn btn-default" %>
+

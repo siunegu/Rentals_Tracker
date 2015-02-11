@@ -47,12 +47,15 @@
 
 Rails.application.routes.draw do
 	resources :subscriptions
-	resources :leases
-
-  resources :properties
+	
+  resources :properties do
+  	resources :leases
+  end
+  	
   get 'landlord_my_properties' => 'properties#landlord_properties'
   get 'tenant_my_properties' => 'properties#tenant_properties'
   
+
   devise_for :tenants
   devise_for :landlords
 

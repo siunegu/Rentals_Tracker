@@ -1,0 +1,14 @@
+
+<%= simple_form_for @property do |f| %>
+  <%= f.input :address, placeholder: "Address" %>
+  <%= f.input :city, placeholder: "City" %>
+  <%= f.input :state, collection: ["NSW", "QLD", "VIC", "WA", "NT", "ACT", "SA", "TAS"] %>
+
+  <%= f.input :description, as: :text, placeholder: "Write something about your place..." %>
+
+  <%= f.input :price, placeholder: "Asking prirce /month" %>  
+
+	<%= f.submit class: 'btn-submit' %>
+<% end %>
+
+<%= link_to 'Destroy', @property, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-kaboom" %>

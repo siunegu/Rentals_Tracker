@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-	before_action :find_property, only: [:show, :destroy]
+	before_action :find_property, only: [:show, :destroy, :edit, :update, :destroy]
 	before_filter :authenticate_landlord!, only: [:new, :create, :destroy]
 
 	def landlord_properties
@@ -10,11 +10,13 @@ class PropertiesController < ApplicationController
 		@property = current_tenant.property
 	end
 
+	# All the Properties ( it's a feature okay! )
 	def index
 		@properties = Property.all
 	end
 
 	def show
+		@leases = @property.leases
 	end
 
 	def new
@@ -23,6 +25,14 @@ class PropertiesController < ApplicationController
 
 	def create
 		@property = property.new(property_params)
+	end
+
+	def edit
+	end
+
+	def update
+		@property.update(property_params)
+		redirect_to @property
 	end
 
 	def destroy
