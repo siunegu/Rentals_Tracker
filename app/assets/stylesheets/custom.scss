@@ -8,9 +8,7 @@
            Global
 *******************************/
 
-html{
-  margin-bottom: 15vh !important;
-}
+html{}
 
 body {
   background-color: #eef0f2 !important;
@@ -32,13 +30,30 @@ h1 {
 
 a {
   color: #563d7c;
+  -webkit-webkit-transition: all 0.3s ease;
+  -moz-webkit-transition: all 0.3s ease;
+  -ms-webkit-transition: all 0.3s ease;
+  -o-webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  text-decoration: none !important;
 }
 
 * {
   font-family: 'Montserrat', sans-serif;
 }
 
+/*******************************
+         Notifications
+*******************************/
 
+.notification-message {
+  background-color: #EEE;
+  padding: 25px;
+  border: 1px solid #DDD;
+}
 
 /*******************************
            Navbar
@@ -264,7 +279,7 @@ a {
 
 .btn-form:hover {
   color: #EEE !important;
-  background-color: #3F2666
+  background-color: #3F2666;
 }
 
 .btn-kaboom {
@@ -418,6 +433,7 @@ a {
 .show-property {
   background-color: #fff;
   padding: 35px 45px;
+  margin: 4px auto;
 
   border: 1px solid rgba(0, 0, 0, 0.1);  
 
@@ -438,4 +454,24 @@ a {
 
 textarea.form-control {
   min-height: 200px !important;
+}
+
+/*******************************
+             Footer
+*******************************/
+
+footer {
+  width: 100%;
+  background-color: #323333;
+
+  margin-top: 15%;  
+  padding: 15px 30px;
+  position: absolute;
+  bottom: 0;
+}
+
+footer > p {
+  position: relative;
+  top: 5px;
+  color: #DDD;
 }

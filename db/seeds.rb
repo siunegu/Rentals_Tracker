@@ -80,7 +80,8 @@ CreditCard.destroy_all
 		amount: 200,
 		landlord_id: landlord_1.id,
 		property_id: p1.id,
-		tenant_id: tenant_1.id
+		tenant_id: tenant_1.id,
+		approved: false,
 	)
 
 #### Messages Seeds

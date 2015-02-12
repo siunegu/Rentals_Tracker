@@ -1,0 +1,10 @@
+<%= simple_form_for new_property_lease_path(@property, @lease) do |f| %>
+	<%= f.input :name, placeholder: "Give it a name!" %>
+	<%= f.input :amount, placeholder: "Amount of each Payment per Month." %>
+	<%= f.input :description, as: :text, placeholder: "Write something about your place..." %>
+	<%= f.input :property_id, placeholder: "25" %>
+	<%= f.input :interval, placeholder: "eg. (An interval of 2 would mean billing every 2 Months.)" %>
+	<%= f.submit class: 'btn-submit' %>
+<% end %>
+
+

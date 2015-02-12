@@ -29,4 +29,6 @@ class Tenant < ActiveRecord::Base
   has_one :landlord, through: :property  
   has_one :credit_card
   has_many :messages   
+
+
 end

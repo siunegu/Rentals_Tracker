@@ -27,12 +27,20 @@ class LeasesController < ApplicationController
 		end
 	end
 
+	def pending_applications
+		@landlord = current_landlord		
+		@unapproved_leases_array = []
+		current_landlord.properties.each do |property|
+			@unapproved_leases_array << property.leases.where(approved: false)
+		end
+		binding.pry
+	end
+
 	def edit
 		@property = Property.find(params[:property_id])
 		@lease = @property.leases.find(params[:id])
 
 		@tenant = @property.lease.tenant		
-
 	end
 
 	def update

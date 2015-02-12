@@ -1,8 +1,14 @@
 <%= simple_form_for [@property, @lease] do |f| %>
+<% if current_landlord %>
 	<%= f.input :name, placeholder: "Give it a name!" %>
 	<%= f.input :amount, placeholder: "Amount of each Payment per Month." %>
-	<%= f.input :description, as: :text, placeholder: "Write something about your place..." %>
+	<%= f.input :description, as: :text, placeholder: "Write something about " %>
 	<%= f.input :interval, placeholder: "eg. (An interval of 2 would mean billing every 2 Months.)" %>
 	<%= f.association :tenant, collection: Tenant.all %>
+<% else %>
+	<%= f.input :amount, placeholder: "Amount of each Payment per Month." %>
+	<%= f.input :description, as: :text, placeholder: "Write something about " %>
+	<%= f.input :interval, placeholder: "eg. (An interval of 2 would mean billing every 2 Months.)" %>
+<% end %>
 	<%= f.submit class: 'btn-submit' %>
 <% end %>
