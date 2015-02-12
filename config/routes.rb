@@ -46,6 +46,11 @@
 #
 
 Rails.application.routes.draw do
+  resources :messages
+
+  get 'landlord_messages' => 'messages#landlord_messages'
+  get 'tenant_messages' => 'messages#tenant_messages'
+
 	resources :subscriptions
 	
   resources :properties do

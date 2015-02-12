@@ -26,5 +26,7 @@ class Tenant < ActiveRecord::Base
 
   has_one :lease, inverse_of: :tenant
   has_one :property, through: :lease, dependent: :destroy
-  has_one :landlord, through: :property     
+  has_one :landlord, through: :property  
+  has_one :credit_card
+  has_many :messages   
 end

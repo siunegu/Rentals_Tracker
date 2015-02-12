@@ -26,4 +26,5 @@ class Landlord < ActiveRecord::Base
 
 	has_many :properties, dependent: :destroy
 	has_many :tenants, through: :properties
+	has_many :messages
 end

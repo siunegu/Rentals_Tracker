@@ -2,6 +2,7 @@ Landlord.destroy_all
 Tenant.destroy_all
 Property.destroy_all
 Lease.destroy_all
+Message.destroy_all
 
 #### Landlords Seed
 
@@ -80,3 +81,21 @@ Lease.destroy_all
 		property_id: p1.id,
 		tenant_id: tenant_1.id
 	)
+
+#### Messages Seeds
+
+	message_1 = Message.create!(
+		to: "tenant_example.com",
+		from: "landlord_example.com",
+		subject: "Your Lease is now Subscribed to a Card",
+		body: "Thanks for the information.",
+		landlord_id: landlord_1.id
+	)
+
+	message_2 = Message.create!(
+		to: "tenant_example.com",
+		from: "landlord_example.com",
+		subject: "Your Lease is now Subscribed to a Card",
+		body: "Subscribe your rent to your Property Securely through Stripe. We do not store your information.",
+		landlord_id: landlord_1.id
+	)	

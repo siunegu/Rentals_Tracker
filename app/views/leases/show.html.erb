@@ -1,1 +1,35 @@
-<%= link_to  'Add Credit Card', add_credit_card_property_lease_path %>
+<h1>Lease Info</h1>
+<div class="container show-property">
+	<div class="col-md-8">
+
+		<h3>Tenant Name:</h3>
+		<p><%= @lease.tenant.name %></p>
+
+		<h3>Agreed Monthly Amount:</h3>
+		<p><%= @lease.amount %> rent per. Month</p>
+		
+		<h3>Email:</h3>
+		<p><%= @lease.tenant.email %></p>
+		<p>Contact Button</p>
+
+		<h3>Created At:</h3>
+		<p><%= @lease.created_at %></p>
+
+    <% if current_landlord == @property.landlord %>
+      <%= link_to 'EDIT LEASE', edit_property_path(@property), class: "btn btn-form" %>       
+    <% end %>
+	</div>
+	<div class="col-md-4">
+		<h3>Credit Card Attached?</h3>
+
+			<% if @tenant %>		
+				There's a Card attached.
+			<% else %>
+				There needs to have tenant's credit card details attached to begin.
+			<% end %>
+
+    <% if current_landlord == @property.landlord %>
+      <%= link_to 'ADD TENANT PAYMENT DETAILS', add_credit_card_property_lease_path( @property, @lease), class: "btn btn-form" %>       
+    <% end %>
+	</div>
+</div>

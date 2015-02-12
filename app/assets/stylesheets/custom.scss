@@ -398,6 +398,8 @@ a {
 
 .new-lease {
   color: #4cae4c;
+  float: right;
+  padding-right: 25px;
 }
 
 
@@ -414,4 +416,18 @@ a {
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   border-radius: 6px;    
+}
+
+.property-leases {
+  background-color: #EFE;
+  padding: 25px;
+  border: 1px solid #FEF;
+}
+
+/*******************************
+             Form
+*******************************/
+
+textarea.form-control {
+  min-height: 200px !important;
 }

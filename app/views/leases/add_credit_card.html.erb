@@ -1,5 +1,8 @@
 <div class="col-md-12">
-<%= simple_form_for @lease, url: {action: 'save_credit_card', method: 'patch'} do |f| %>
+
+<%= @lease.tenant.name %>
+<%= form_for save_credit_card_property_lease_path(@property, @lease) do |f| %>
+
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="<%= ENV['STRIPE_SECRET_KEY'] %>"
@@ -9,11 +12,9 @@
     data-label="Add A Credit Card with © Stripe"
     data-image="/128x128.png">
   </script>
+
 <% end %>
 
 </div>
 
 
-<%= simple_form_for(:location, 
-  :url => {:action => 'update', :id => @location.id},
-  :method => 'put' ) do |f| %

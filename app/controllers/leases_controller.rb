@@ -1,5 +1,10 @@
 class LeasesController < ApplicationController
-	before_filter :authenticate_landlord!, only: [:landlord_leases]
+	before_filter :authenticate_landlord!, only: [:add_credit_card]
+
+	def show
+		@property = Property.find(params[:property_id])
+		@lease = @property.leases.find(params[:id])
+	end
 
 	def new	
 		@property = Property.find(params[:property_id])
@@ -23,10 +28,17 @@ class LeasesController < ApplicationController
 	end
 
 	def edit
+		@property = Property.find(params[:property_id])
+		@lease = @property.leases.find(params[:id])
+
+		@tenant = @property.lease.tenant		
+
 	end
 
 	def update
-		@lease = current_tenant.lease.build
+		@property = Property.find(params[:property_id])
+		@tenant = @property.lease.tenant
+		@lease = @tenant.lease.build
 
 		@lease.update
 	end
@@ -37,12 +49,12 @@ class LeasesController < ApplicationController
 
 		amount = (@lease.amount).to_f
 		@display_amount = amount / 100
-			
 	end
 
 	def save_credit_card
 		@property = Property.find(params[:property_id])
 		@lease = @property.leases.find(params[:id])
+		@tenant = @lease.tenant
 
 		if params[:stripeToken]
 			token = params[:stripeToken]
@@ -51,25 +63,29 @@ class LeasesController < ApplicationController
 									    :amount => @lease.property.price, # in cents
 									    :currency => "usd",
 									    :interval => "month",
-									    :name => tenant.property.address,
+									    :name => @tenant.property.address,
 									    :id => "lease_#{@lease.id}"
 									  )
 
 			new_customer = Stripe::Customer.create(
 				:card => token,
 				:plan => "lease_#{@lease.id}",
-				:email => current_tenant.email,
-				:description => tenant.property.address
+				:email => @tenant.email,
+				:description => @property.address
 			)			
 
-			current_tenant.stripe_id = new_customer.id
-			current_tenant.credit_card.stripe_id = token
+			@tenant.stripe_id = new_customer.id
 
-			current_tenant.lease.stripe_id = stripe_plan.id
-			current_tenant.lease.save
-			current_tenant.lease.update
+			@tenant.credit_card.stripe_id = token
+
+			@tenant.lease.stripe_id = stripe_plan.id
+			
+			@tenant.lease.save
+
+			@tenant.lease.update
 	
 			redirect_to tenant_my_properties_path
+
 		else
 			redirect_to add_credit_card_property_lease_path(@property, @lease)
 		end

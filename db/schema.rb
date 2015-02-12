@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211034252) do
+ActiveRecord::Schema.define(version: 20150212044850) do
 
   create_table "credit_cards", force: :cascade do |t|
     t.string   "stripe_id"
@@ -59,6 +59,20 @@ ActiveRecord::Schema.define(version: 20150211034252) do
     t.string   "boolean"
     t.integer  "landlord_id"
   end
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "to"
+    t.string   "from"
+    t.string   "subject"
+    t.text     "body"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "landlord_id"
+    t.integer  "tenant_id"
+  end
+
+  add_index "messages", ["landlord_id"], name: "index_messages_on_landlord_id"
+  add_index "messages", ["tenant_id"], name: "index_messages_on_tenant_id"
 
   create_table "plans", force: :cascade do |t|
     t.string   "stripe_id"
