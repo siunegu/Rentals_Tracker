@@ -1,14 +1,13 @@
-<div class="col-md-12">
+<div class="col-md-12 col-center">
 
-<h2>Add New Billing and Lease Info for <%= @lease.tenant.name %>.</h2>
-
+<h1>
+Thankyou for Applying <%= @lease.tenant.name %>! Your Application has been Approved!
+</h1>
 
 
 <%= simple_form_for @lease, 
     :url => url_for(:action => 'save_credit_card', :controller => 'leases'),
     :method => 'post' do |f| %>
-    <h3>Applicants Details:</h3>
-    <%= f.input :name %>
 
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -16,7 +15,7 @@
     data-amount="<%= @lease.amount %>"
     data-name="INNKEEPER"
     data-description="Create a Plan of $<%= @display_amount  %> per month"
-    data-label="Add A Credit Card with © Stripe"
+    data-label="Continue with © Stripe"
     data-image="/128x128.png">
   </script>
 
