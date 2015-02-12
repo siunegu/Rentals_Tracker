@@ -98,17 +98,6 @@ ActiveRecord::Schema.define(version: 20150212044850) do
 
   add_index "properties", ["landlord_id"], name: "index_properties_on_landlord_id"
 
-  create_table "subscriptions", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "plan_id"
-    t.string   "stripe_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "subscriptions", ["plan_id"], name: "index_subscriptions_on_plan_id"
-  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id"
-
   create_table "tenants", force: :cascade do |t|
     t.string   "name"
     t.string   "email",                  default: "", null: false
