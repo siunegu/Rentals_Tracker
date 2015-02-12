@@ -8,7 +8,10 @@
 #
 
 class Lease < ActiveRecord::Base
+	has_attached_file :file
+
 	belongs_to :tenant, inverse_of: :lease
 	belongs_to :property
 	belongs_to :landlord 
+
 end

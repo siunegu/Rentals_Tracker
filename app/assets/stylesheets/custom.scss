@@ -320,8 +320,7 @@ a {
   background-color: #d43f3a
 }
 
-.fancy-btn
-{
+.fancy-btn {
   text-transform: uppercase;
   letter-spacing: 2px;
   text-align: center;
@@ -356,8 +355,7 @@ a {
   background: #FFF;
 }
 
-.fancy-btn span 
-{
+.fancy-btn span {
   display: inline-block;
   position: relative;
   padding-right: 0;
@@ -365,8 +363,7 @@ a {
   transition: padding-right 0.5s;
 }
 
-.fancy-btn span:after 
-{
+.fancy-btn span:after {
   content: ' ';  
   position: absolute;
   top: 0;

@@ -49,7 +49,12 @@ Rails.application.routes.draw do
 	resources :subscriptions
 	
   resources :properties do
-  	resources :leases
+  	resources :leases do
+      member do
+        get "add_credit_card"
+        post "save_credit_card"
+      end
+    end
   end
   	
   get 'landlord_my_properties' => 'properties#landlord_properties'

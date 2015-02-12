@@ -1,5 +1,7 @@
 Landlord.destroy_all
 Tenant.destroy_all
+Property.destroy_all
+Lease.destroy_all
 
 #### Landlords Seed
 

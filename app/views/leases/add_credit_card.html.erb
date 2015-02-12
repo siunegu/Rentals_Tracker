@@ -1,0 +1,19 @@
+<div class="col-md-12">
+<%= simple_form_for @lease, url: {action: 'save_credit_card', method: 'patch'} do |f| %>
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= ENV['STRIPE_SECRET_KEY'] %>"
+    data-amount="<%= @lease.amount %>"
+    data-name="INNKEEPER"
+    data-description="Create a Plan of $<%= @display_amount  %> per month"
+    data-label="Add A Credit Card with © Stripe"
+    data-image="/128x128.png">
+  </script>
+<% end %>
+
+</div>
+
+
+<%= simple_form_for(:location, 
+  :url => {:action => 'update', :id => @location.id},
+  :method => 'put' ) do |f| %

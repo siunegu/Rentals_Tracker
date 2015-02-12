@@ -3,12 +3,12 @@ class LeasesController < ApplicationController
 
 	def new	
 		@property = Property.find(params[:property_id])
-		@lease = @property.leases.new
+		@lease = @property.leases.build
 	end
 
 	def create
-		# binding.pry
-		@lease = Lease.new(name: params["lease"]["name"],
+		@property = Property.find(params[:property_id])
+		@lease = @property.leases.build(name: params["lease"]["name"],
 											 amount: params["lease"]["amount"],
 											 description: params["lease"]["description"],	
 											 interval: params["lease"]["interval"],
@@ -16,7 +16,7 @@ class LeasesController < ApplicationController
 											)
 
 		if @lease.save
-			redirect_to root_path
+			redirect_to @property
 		else
 			render :new
 		end
@@ -27,8 +27,24 @@ class LeasesController < ApplicationController
 
 	def update
 		@lease = current_tenant.lease.build
-		if !current_tenant.stripe_token && current_tenant.credit_card
+
+		@lease.update
+	end
+
+	def add_credit_card
+		@property = Property.find(params[:property_id])
+		@lease = @property.leases.find(params[:id])
+
+		amount = (@lease.amount).to_f
+		@display_amount = amount / 100
 			
+	end
+
+	def save_credit_card
+		@property = Property.find(params[:property_id])
+		@lease = @property.leases.find(params[:id])
+
+		if params[:stripeToken]
 			token = params[:stripeToken]
 
 			stripe_plan = Stripe::Plan.create(
@@ -36,40 +52,32 @@ class LeasesController < ApplicationController
 									    :currency => "usd",
 									    :interval => "month",
 									    :name => tenant.property.address,
-									    :id => plan_id,
-									    :customer => stripe_tenant.id
-									    )
+									    :id => "lease_#{@lease.id}"
+									  )
 
 			new_customer = Stripe::Customer.create(
 				:card => token,
-				:plan => plan_id,
+				:plan => "lease_#{@lease.id}",
 				:email => current_tenant.email,
 				:description => tenant.property.address
-				)			
+			)			
 
-		# Save Stripe Tenant Stripe_id to Databse for use Later
-			current_tenant.stripe_id = new_customer.id # eg. "cus_5ekJlrYS22WMUR"			
-		# Save the token as the current tenant's credit card
-		current_tenant.credit_card.stripe_id = token
+			current_tenant.stripe_id = new_customer.id
+			current_tenant.credit_card.stripe_id = token
 
-		# Create new subscription on an existing customer
-			# customer_id = Stripe::retrieve(new_customer.id)
-			# customer_id.subscriptions.create(plan: customer_id)
-
-			customer = Stripe::Customer.retrieve(new_customer.id)
-			customer.subscriptions.create(plan: plan_id)
-			current_tenant.lease.save		
-
-			current_tenant.lease.stripe_id = token
+			current_tenant.lease.stripe_id = stripe_plan.id
 			current_tenant.lease.save
+			current_tenant.lease.update
+	
+			redirect_to tenant_my_properties_path
+		else
+			redirect_to add_credit_card_property_lease_path(@property, @lease)
 		end
-		@lease.update
-	end
+
+	end	
 
 	def destroy
 		@lease.destroy
 	end
-
-
 
 end

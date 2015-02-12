@@ -13,6 +13,7 @@ gem 'therubyracer'
 
 # Pretty
 gem 'bootstrap-sass'
+gem "font-awesome-rails"
 
 gem 'pry'
 
@@ -29,6 +30,8 @@ gem 'stripe'
 # gem 'paper_trail'
 
 gem 'annotate'
+
+gem 'paperclip'
 
 
 group :development, :test do
