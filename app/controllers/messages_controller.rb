@@ -19,6 +19,7 @@ class MessagesController < ApplicationController
 
 	def create
 		@message = Message.create(message_params)
+		MessageMailer.message_mail(@message).deliver_now
 		redirect_to messages_path
 	end
 

@@ -15,34 +15,33 @@ gem 'therubyracer'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
 
-gem 'pry'
-
+# Helper Gems
 gem 'simple_form'
+gem 'pry'
+gem 'annotate'
 
+# Devise Login Engine
 gem 'devise'
 
+# Stripe 
 gem 'stripe'
 # gem 'omniauth-stripe-connect'
 # gem 'stripe_event'
 
+# Image Uploads (Not Implemented)
+gem 'paperclip'
 # gem 'groupdate'
-# gem 'paperclip'
 # gem 'paper_trail'
 
-gem 'annotate'
-
-gem 'paperclip'
-
+group :production do
+	gem 'pg'
+	gem 'rails_12factor'
+end
 
 group :development, :test do
 	gem 'sqlite3'
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
-  # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
 
