@@ -3,6 +3,7 @@ Tenant.destroy_all
 Property.destroy_all
 Lease.destroy_all
 Message.destroy_all
+CreditCard.destroy_all
 
 #### Landlords Seed
 
@@ -98,4 +99,11 @@ Message.destroy_all
 		subject: "Your Lease is now Subscribed to a Card",
 		body: "Subscribe your rent to your Property Securely through Stripe. We do not store your information.",
 		landlord_id: landlord_1.id
+	)	
+
+#### Credit Card Seeds
+
+	card_1 = CreditCard.create!(
+		stripe_id: "test_234238472934",
+		tenant_id: tenant_1.id
 	)	

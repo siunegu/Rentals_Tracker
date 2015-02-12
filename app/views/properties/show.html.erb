@@ -42,8 +42,8 @@
         <% if @property.leases && lease.tenant %>
           <%= link_to property_lease_path(@property, lease) do %>
             <div class="property-leases">
-              <p><%= lease.tenant.name %>'s Lease Agreement</p>
-              <p><%= lease.amount %> rent per. Month</p>
+              <p>Name: <%= lease.tenant.name %></p>
+              <p>Rate: <%= lease.amount %> rent per. Month</p>
             </div>
           <% end %>
         <% else %>

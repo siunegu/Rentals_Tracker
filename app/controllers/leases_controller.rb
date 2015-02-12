@@ -81,10 +81,8 @@ class LeasesController < ApplicationController
 			@tenant.lease.stripe_id = stripe_plan.id
 			
 			@tenant.lease.save
-
-			@tenant.lease.update
 	
-			redirect_to tenant_my_properties_path
+			redirect_to property_lease_path(@lease)
 
 		else
 			redirect_to add_credit_card_property_lease_path(@property, @lease)

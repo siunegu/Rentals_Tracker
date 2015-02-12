@@ -1,8 +1,10 @@
 <div class="col-md-12">
 
 <%= @lease.tenant.name %>
-<%= form_for save_credit_card_property_lease_path(@property, @lease) do |f| %>
-
+<%# form_for save_credit_card_property_lease_path(@property, @lease) do |f| %>
+<%= simple_form_for @lease, 
+    :url => url_for(:action => 'save_credit_card', :controller => 'leases'),
+    :method => 'post' do |f| %>
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="<%= ENV['STRIPE_SECRET_KEY'] %>"
