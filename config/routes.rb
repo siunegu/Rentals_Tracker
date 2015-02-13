@@ -80,11 +80,13 @@ Rails.application.routes.draw do
     end
   end
 
+  # Users Properties Index:
   get 'landlord_my_properties' => 'properties#landlord_properties'
   get 'tenant_my_properties' => 'properties#tenant_properties'
 
   # Pending Applications:
   get 'pending_applications' => 'leases#pending_applications'
+  get 'tenant_applications' => 'leases#tenant_applications'
   
 
   devise_for :tenants

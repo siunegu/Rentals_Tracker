@@ -448,8 +448,21 @@ a:hover {
   background-color: #EFE;
   padding: 25px;
   border: 1px solid #FEF;
+  border-radius: 4px;
 }
 
+.pending-red-box {
+  background-color: #F5A3A3;
+  padding: 25px;
+  border: 1px solid #FEF;
+  border-radius: 4px;
+}
+
+.pending-green-box {
+  background-color: #EFE;
+  padding: 25px;
+  border: 1px solid #FEF;
+}
 /*******************************
              Form
 *******************************/

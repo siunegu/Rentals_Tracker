@@ -19,6 +19,7 @@ class LeasesController < ApplicationController
 											 interval: params["lease"]["interval"],
 											 tenant_id: params["lease"]["tenant_id"]
 											)
+		@lease.amount = @lease.amount.to_f * 100
 
 		if @lease.save
 			redirect_to @property
@@ -27,7 +28,12 @@ class LeasesController < ApplicationController
 		end
 	end
 
-	def pending_applications
+	def tenant_applications
+		@tenant = current_tenant
+		@lease = @tenant.lease
+	end
+
+	def pending_applications	
 		@landlord = current_landlord		
 		@unapproved_leases_array = []
 		current_landlord.properties.each do |property|

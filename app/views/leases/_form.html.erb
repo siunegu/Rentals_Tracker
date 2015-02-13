@@ -17,11 +17,13 @@ Application for <%= @property.address %>
 		<%= f.input :interval, placeholder: "eg. (An interval of 2 would mean billing every 2 Months.)" %>
 		<%= f.input :approved, inline_label: "Approve this Lease?" %>
 		<%= f.association :tenant, collection: Tenant.all %>
+		<%= f.button :submit, "Approve and Save!", class: 'btn-submit' %>
 	<% else %>
 		<%= f.input :name, placeholder: "Your Name eg. Bob" %>
 		<%= f.input :amount, placeholder: "Your Proposed Payment per Month." %>
-		<%= f.input :interval, placeholder: "How often do you want to be billed for rent?" %>
+		<%= f.input :interval, placeholder: "How often do you want to be billed for rent? eg. 1 is per month." %>
 		<%= f.input :description, as: :text, placeholder: "Write something about yourself." %>
+	<%= f.button :submit, "Submit Your Application!", class: 'btn-submit' %>
 	<% end %>
-		<%= f.button :submit, "Submit", class: 'btn-submit' %>
+		
 <% end %>

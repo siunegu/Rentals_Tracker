@@ -32,6 +32,7 @@
       <% elsif tenant_signed_in? %>    
         <li class="navbar-welcome-user">Welcome <%= current_tenant.name %>!</li>           
         <li><%= link_to "My Properties", tenant_my_properties_path %></li>  
+        <li><%= link_to "My Applications", tenant_applications_path %></li>  
         <li><%= link_to "Log Out", destroy_tenant_session_path, method: :delete %></li>
         <li><%= link_to "Edit Profile", edit_tenant_registration_path, class: 'btn btn-nav-edit' %></li>
       <% elsif !landlord_signed_in? || !tenant_signed_in? %>        

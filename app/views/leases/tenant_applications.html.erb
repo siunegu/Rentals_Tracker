@@ -1,0 +1,18 @@
+<h1>My Pending Applications</h1>
+
+<div class="container">
+	<h3>Application For: <%= @lease.property.address %></h3>
+	<% if @lease.approved %>
+
+		<div class="pending-green-box">
+			Status: Approved
+		</div>
+
+	<% else %>
+
+		<div class="pending-red-box">
+			Status: Pending
+		</div>
+
+	<% end %>
+</div>

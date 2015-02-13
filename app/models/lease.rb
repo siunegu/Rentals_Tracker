@@ -13,5 +13,5 @@ class Lease < ActiveRecord::Base
 	belongs_to :tenant, inverse_of: :lease
 	belongs_to :property
 	belongs_to :landlord 
-
+	
 end
