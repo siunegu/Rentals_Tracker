@@ -1,14 +1,27 @@
-<%= simple_form_for [@property, @lease] do |f| %>
-<% if current_landlord %>
-	<%= f.input :name, placeholder: "Give it a name!" %>
-	<%= f.input :amount, placeholder: "Amount of each Payment per Month." %>
-	<%= f.input :description, as: :text, placeholder: "Write something about " %>
-	<%= f.input :interval, placeholder: "eg. (An interval of 2 would mean billing every 2 Months.)" %>
-	<%= f.association :tenant, collection: Tenant.all %>
+<h2>
+Application for <%= @property.address %>
+</h2>
+
+<h3>
+<% if current_tenant %>
+	You are <%= current_tenant.name %>, please fill out your details below.
 <% else %>
-	<%= f.input :amount, placeholder: "Amount of each Payment per Month." %>
-	<%= f.input :description, as: :text, placeholder: "Write something about " %>
-	<%= f.input :interval, placeholder: "eg. (An interval of 2 would mean billing every 2 Months.)" %>
+	You are <%= current_landlord.name %>, review this application!
 <% end %>
-	<%= f.submit class: 'btn-submit' %>
+</h3>
+<%= simple_form_for [@property, @lease] do |f| %>
+	<% if current_landlord %>
+		<%= f.input :name, placeholder: "Give it a name!" %>
+		<%= f.input :amount, placeholder: "Amount of each Payment per Month." %>
+		<%= f.input :description, as: :text, placeholder: "Write something about " %>
+		<%= f.input :interval, placeholder: "eg. (An interval of 2 would mean billing every 2 Months.)" %>
+		<%= f.input :approved, inline_label: "Approve this Lease?" %>
+		<%= f.association :tenant, collection: Tenant.all %>
+	<% else %>
+		<%= f.input :name, placeholder: "Your Name eg. Bob" %>
+		<%= f.input :amount, placeholder: "Your Proposed Payment per Month." %>
+		<%= f.input :interval, placeholder: "How often do you want to be billed for rent?" %>
+		<%= f.input :description, as: :text, placeholder: "Write something about yourself." %>
+	<% end %>
+		<%= f.button :submit, "Submit", class: 'btn-submit' %>
 <% end %>

@@ -33,7 +33,7 @@ class LeasesController < ApplicationController
 		current_landlord.properties.each do |property|
 			@unapproved_leases_array << property.leases.where(approved: false)
 		end
-		# binding.pry
+		@unapproved_leases_array
 	end
 
 	def edit
