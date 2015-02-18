@@ -35,6 +35,13 @@ CreditCard.destroy_all
 	 password_confirmation: 'password'
 	)
 
+	tenant_3 = Tenant.create!(
+	 name: 'Tenant Roger',
+	 email: 'roger@example.com',
+	 password: 'password', # has to be at least 8 characters
+	 password_confirmation: 'password'
+	)
+
 
 #### Properties Seed
 
@@ -81,6 +88,14 @@ CreditCard.destroy_all
 		landlord_id: landlord_1.id,
 		property_id: p1.id,
 		tenant_id: tenant_1.id,
+		approved: false,
+	)
+
+	lease_2 = Lease.create!(
+		amount: 200,
+		landlord_id: landlord_1.id,
+		property_id: p1.id,
+		tenant_id: tenant_2.id,
 		approved: false,
 	)
 

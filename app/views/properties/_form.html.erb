@@ -11,4 +11,6 @@
 	<%= f.submit class: 'btn-submit' %>
 <% end %>
 
+<% if !@property %>
 <%= link_to 'Destroy', @property, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-kaboom" %>
+<% end %>

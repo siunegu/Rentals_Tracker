@@ -2,7 +2,7 @@
            Imports
 *******************************/
 
-@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
 /*******************************
            Global
@@ -150,6 +150,8 @@ a:hover {
 }
 
 .btn-blue {
+  margin-top: 3%;
+  width: 100%;
   font-weight: 400;
   margin-bottom: 1px;
   -webkit-font-smoothing: antialiased;
@@ -191,6 +193,7 @@ a:hover {
 
 
 .btn-red {
+  width: 100%;
   font-weight: 400;
   margin-bottom: 1px;
   -webkit-font-smoothing: antialiased;

@@ -1,5 +1,10 @@
 <% @unapproved_leases_array.each do |unapproved_lease| %>
 
-	<%= unapproved_lease %>
+	<% unapproved_lease.each do |lease| %>
+		<%= lease.name %>
+		<%= lease.description %>
+		<%= lease.amount %>
+		<%= lease.interval %>
+	<% end %>
 
 <% end %>
