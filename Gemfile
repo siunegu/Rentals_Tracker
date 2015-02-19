@@ -28,7 +28,7 @@ gem 'stripe'
 # gem 'omniauth-stripe-connect'
 # gem 'stripe_event'
 
-# Image Uploads (Not Implemented)
+# Image Uploads
 gem 'paperclip'
 # gem 'groupdate'
 # gem 'paper_trail'

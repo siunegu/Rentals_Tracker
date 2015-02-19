@@ -1,29 +1,40 @@
 <h2>
-Application for <%= @property.address %>
+Application for <%= @property.address %>.
 </h2>
 
 <h3>
 <% if current_tenant %>
-	You are <%= current_tenant.name %>, please fill out your details below.
+	You are <%= current_tenant.name %>, please fill out your details below...
 <% else %>
 	You are <%= current_landlord.name %>, review this application!
 <% end %>
 </h3>
+
 <%= simple_form_for [@property, @lease] do |f| %>
-	<% if current_landlord %>
-		<%= f.input :name, placeholder: "Give it a name!" %>
-		<%= f.input :amount, placeholder: "Amount of each Payment per Month." %>
-		<%= f.input :description, as: :text, placeholder: "Write something about " %>
-		<%= f.input :interval, placeholder: "eg. (An interval of 2 would mean billing every 2 Months.)" %>
-		<%= f.input :approved, inline_label: "Approve this Lease?" %>
-		<%= f.association :tenant, collection: Tenant.all %>
-		<%= f.button :submit, "Approve and Save!", class: 'btn-submit' %>
-	<% else %>
-		<%= f.input :name, placeholder: "Your Name eg. Bob" %>
-		<%= f.input :amount, placeholder: "Your Proposed Payment per Month." %>
-		<%= f.input :interval, placeholder: "How often do you want to be billed for rent? eg. 1 is per month." %>
-		<%= f.input :description, as: :text, placeholder: "Write something about yourself." %>
-	<%= f.button :submit, "Submit Your Application!", class: 'btn-submit' %>
-	<% end %>
-		
+	<div class="form-margins">
+		<% if current_landlord %>
+			<%= f.input :name, placeholder: "Give it a name!" %>
+			<%= f.input :amount, placeholder: "Amount of each Payment per Month." %>
+			<%= f.input :description, as: :text, placeholder: "Write something about " %>
+			<%= f.input :interval, placeholder: "eg. (An interval of 2 would mean billing every 2 Months.)" %>
+			<%= f.input :approved, inline_label: "Approve this Lease?" %>
+			<%= f.association :tenant, collection: Tenant.all %>
+			<%= f.button :submit, "Approve and Save!", class: 'btn-submit' %>
+		<% else %>
+			<%= f.input :name, placeholder: "Your Name eg. Bob" %>
+			<%= f.input :amount, placeholder: "Your Proposed Payment per Month." %>
+			<%= f.input :interval, placeholder: "How often do you want to be billed for rent? eg. 1 is per month." %>
+			<%= f.input :description, as: :text, placeholder: "Write something about yourself." %>
+
+			<hr>
+
+			<h3>Proof of Identification</h3>
+			<p>We need a valid proof of your identity for bookeeping and legal purposes only. We will not disclose your information to anyone.</p>
+		  <div class="btn btn-identification btn-file">
+				<%= f.input "Upload My id!", as: :file %>
+			</div>
+	</div>
+	
+		<%= f.button :submit, "Submit Your Application!", class: 'btn-submit' %>
+		<% end %>
 <% end %>

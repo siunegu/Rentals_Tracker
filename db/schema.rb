@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150212085524) do
+ActiveRecord::Schema.define(version: 20150219052701) do
 
   create_table "credit_cards", force: :cascade do |t|
     t.string   "stripe_id"
@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 20150212085524) do
   add_index "landlords", ["reset_password_token"], name: "index_landlords_on_reset_password_token", unique: true
 
   create_table "leases", force: :cascade do |t|
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.integer  "tenant_id"
     t.integer  "property_id"
     t.string   "stripe_id"
@@ -58,7 +58,11 @@ ActiveRecord::Schema.define(version: 20150212085524) do
     t.string   "published"
     t.string   "boolean"
     t.integer  "landlord_id"
-    t.boolean  "approved",    default: false
+    t.boolean  "approved",          default: false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   create_table "messages", force: :cascade do |t|

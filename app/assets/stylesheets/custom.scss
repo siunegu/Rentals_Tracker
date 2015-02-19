@@ -466,6 +466,7 @@ a:hover {
   padding: 25px;
   border: 1px solid #FEF;
 }
+
 /*******************************
              Form
 *******************************/
@@ -473,6 +474,87 @@ a:hover {
 textarea.form-control {
   min-height: 200px !important;
 }
+
+.form-margins {
+  margin: 6rem auto;
+}
+
+// This makes the uplaod button stylable
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 100px;
+}
+
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  min-width: 100%;
+  min-height: 60%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+div.btn.btn-file > div > label {
+  position: relative;
+  top: 2px;
+  color: #fff;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+// This controls the upload button's style
+
+.btn-identification {
+  width: 100%;
+  font-weight: 400;
+  margin-bottom: 1px;
+  -webkit-font-smoothing: antialiased;
+  height: 30px;
+  text-decoration: none;
+
+  display: block;
+  position: relative;
+  padding: 0 30px;
+  height: 40px;
+
+  background: #12a3ff;
+
+
+  font-size: 16px;
+  line-height: 30px;
+  color: white;
+  font-weight: bold;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;  
+
+  transition: all 0.5s ease;
+  
+}
+
+.btn-identification:hover {
+  color: #f7f7f7 !important;
+  background: #1275FF !important;
+  border: 1px solid rgba(0, 0, 0, 0.4);  
+}
+
 
 /*******************************
              Footer
