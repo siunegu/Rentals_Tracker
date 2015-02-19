@@ -45,7 +45,7 @@
               <% if lease.tenant %>
               <p>Name: <%= lease.tenant.name %></p>
               <% end %>
-              <p>Rate: <%= (lease.amount).to_f.round(2) / 100 %> rent per. Month</p>
+              <p>Rate: <%= lease.amount %> rent per. Month</p>
             </div>
           <% end %>
         <% end %>

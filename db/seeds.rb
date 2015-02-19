@@ -5,7 +5,7 @@ Lease.destroy_all
 Message.destroy_all
 CreditCard.destroy_all
 
-#### Landlords Seed
+#### Landlords Seeds
 
 	landlord_1 = Landlord.create!(
 	 name: 'Landlord Default',
@@ -20,6 +20,8 @@ CreditCard.destroy_all
 	 password: 'password', # has to be at least 8 characters
 	 password_confirmation: 'password'
 	)
+
+#### Tenants Seeds
 
 	tenant_1 = Tenant.create!(
 	 name: 'Tenant Default',
@@ -43,7 +45,7 @@ CreditCard.destroy_all
 	)
 
 
-#### Properties Seed
+#### Properties Seeds
 
 	p1 = Property.create!(
 		address: '3828 Piermont Dr',
@@ -60,7 +62,7 @@ CreditCard.destroy_all
 		state: 'FS',
 		price: 5000,
 		description: "I need support. Me! The almost 40-year old pregnant woman with the surprise baby on the way and the husband with lung cancer who disappears for hours on end. And I don't know where he goes and he barely even speaks to me anymore.",
-		landlord_id: landlord_1.id
+		landlord_id: landlord_2.id
 	)
 
 	p3 = Property.create!(
@@ -69,7 +71,7 @@ CreditCard.destroy_all
 		state: 'NM',
 		price: 1000,
 		description: "Don't you get it? On the outside it's a nail salon right, on the inside it's the best money laundering a growing boy could ask for. Wait, wait! Come back here. Sit. Come on, come on... humor me here for a second. You know you need to launder your money, right? ",		
-		landlord_id: landlord_2.id
+		landlord_id: landlord_1.id
 	)
 
 	p4 = Property.create!(
@@ -81,22 +83,55 @@ CreditCard.destroy_all
 		landlord_id: landlord_2.id
 	)
 
+	p5 = Property.create!(
+		address: '384 Cumbre Del Sur Ct',
+		city: 'Albuquerque',
+		state: 'NM',
+		price: 1000,
+		description: "The blowfish puffs himself up four, five times larger than normal and why? Why does he do that? So that it makes him intimidating, that's why. ",		
+		landlord_id: landlord_2.id
+	)	
+
 #### Lease Seeds
 
 	lease_1 = Lease.create!(
-		amount: 200,
+		name: tenant_1.name,
+		amount: 2900,
+		interval: 1,
 		landlord_id: landlord_1.id,
 		property_id: p1.id,
 		tenant_id: tenant_1.id,
-		approved: false,
+		approved: false
 	)
 
 	lease_2 = Lease.create!(
-		amount: 200,
+		name: tenant_2.name,
+		amount: 930,
+		interval: 1,
 		landlord_id: landlord_1.id,
 		property_id: p1.id,
 		tenant_id: tenant_2.id,
-		approved: false,
+		approved: false
+	)
+
+	lease_3 = Lease.create!(
+		name: tenant_3.name,
+		amount: 1000,
+		interval: 1,
+		landlord_id: landlord_1.id,
+		property_id: p1.id,
+		tenant_id: tenant_3.id,
+		approved: false
+	)
+
+	lease_4 = Lease.create!(
+		name: tenant_3.name,
+		amount: 1200,
+		interval: 1,
+		landlord_id: landlord_2.id,
+		property_id: p2.id,
+		tenant_id: tenant_3.id,
+		approved: false
 	)
 
 #### Messages Seeds

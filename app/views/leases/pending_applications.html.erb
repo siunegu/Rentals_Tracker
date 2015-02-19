@@ -1,10 +1,19 @@
-<% @unapproved_leases_array.each do |unapproved_lease| %>
 
-	<% unapproved_lease.each do |lease| %>
-		<%= lease.name %>
-		<%= lease.description %>
-		<%= lease.amount %>
-		<%= lease.interval %>
-	<% end %>
+<div class="container">
+<h1>My Pending Leases</h1>
 
-<% end %>
+		<% @unapproved_leases_array.each do |unapproved_lease| %>
+
+		<% unapproved_lease.each do |lease| %>
+			<div class="show-property">
+				<h3><%= lease.name %></h3>
+				<p>For Property: <%= lease.property.address %></p>
+				<%= lease.description %>
+				<p>Rent Per Month: <%= lease.amount %></p>
+				<p>Bill me every <%= lease.interval %> month.</p>
+			</div>
+		<% end %>
+
+		<% end %>
+
+</div>
