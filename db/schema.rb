@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150219052701) do
+ActiveRecord::Schema.define(version: 20150222002449) do
 
   create_table "credit_cards", force: :cascade do |t|
     t.string   "stripe_id"
@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 20150219052701) do
     t.string   "name"
     t.string   "description"
     t.string   "amount"
-    t.string   "integer"
     t.string   "interval"
     t.string   "published"
     t.string   "boolean"

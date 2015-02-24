@@ -31,15 +31,15 @@ CreditCard.destroy_all
 	)
 
 	tenant_2 = Tenant.create!(
-	 name: 'Tenant Bob',
-	 email: 'bob@example.com',
+	 name: 'Tenant Rich',
+	 email: 'rich@example.com',
 	 password: 'password', # has to be at least 8 characters
 	 password_confirmation: 'password'
 	)
 
 	tenant_3 = Tenant.create!(
-	 name: 'Tenant Roger',
-	 email: 'roger@example.com',
+	 name: 'Tenant Poorman',
+	 email: 'poorman@example.com',
 	 password: 'password', # has to be at least 8 characters
 	 password_confirmation: 'password'
 	)
@@ -96,6 +96,7 @@ CreditCard.destroy_all
 
 	lease_1 = Lease.create!(
 		name: tenant_1.name,
+		description: "I have been waiting. I've been waiting all day. Waiting for Gus to send one of his men to kill me. And it's you. Who do you know, who's okay with using children, Jesse? Who do you know... who's allowed children to be murdered... hmm? ",				
 		amount: 2900,
 		interval: 1,
 		landlord_id: landlord_1.id,
@@ -106,16 +107,18 @@ CreditCard.destroy_all
 
 	lease_2 = Lease.create!(
 		name: tenant_2.name,
+		description: "I have been waiting. I've been waiting all day. Waiting for Gus to send one of his men to kill me. And it's you. Who do you know, who's okay with using children, Jesse? Who do you know... who's allowed children to be murdered... hmm? ",		
 		amount: 930,
 		interval: 1,
 		landlord_id: landlord_1.id,
 		property_id: p1.id,
 		tenant_id: tenant_2.id,
-		approved: false
+		approved: true
 	)
 
 	lease_3 = Lease.create!(
 		name: tenant_3.name,
+		description: "I have been waiting. I've been waiting all day. Waiting for Gus to send one of his men to kill me. And it's you. Who do you know, who's okay with using children, Jesse? Who do you know... who's allowed children to be murdered... hmm? ",				
 		amount: 1000,
 		interval: 1,
 		landlord_id: landlord_1.id,
@@ -126,6 +129,7 @@ CreditCard.destroy_all
 
 	lease_4 = Lease.create!(
 		name: tenant_3.name,
+		description: "I have been waiting. I've been waiting all day. Waiting for Gus to send one of his men to kill me. And it's you. Who do you know, who's okay with using children, Jesse? Who do you know... who's allowed children to be murdered... hmm? ",				
 		amount: 1200,
 		interval: 1,
 		landlord_id: landlord_2.id,

@@ -12,28 +12,49 @@ class LeasesController < ApplicationController
 	end
 
 	def create
-		@property = Property.find(params[:property_id])
-		@lease = @property.leases.build(name: params["lease"]["name"],
-											 amount: params["lease"]["amount"],
-											 description: params["lease"]["description"],	
-											 interval: params["lease"]["interval"],
-											 tenant_id: params["lease"]["tenant_id"]
-											)
-		@lease.amount = @lease.amount.to_f * 100
+		@property = Property.find(params[:property_id])		
+		if landlord_signed_in?
+			@lease = @property.leases.build(name: params["lease"]["name"],
+												 amount: params["lease"]["amount"],
+												 description: params["lease"]["description"],	
+												 interval: params["lease"]["interval"],
+												 tenant_id: params["lease"]["tenant_id"],
+												 file: params["lease"]["file_file_name"]
+												)
 
-		if @lease.save
-			redirect_to @property
-		else
-			render :new
-		end
+			@lease.amount = @lease.amount.to_f * 100		
+
+			if @lease.save
+				redirect_to @property
+			else
+				render :new
+			end
+		elsif tenant_signed_in?
+
+			@lease = current_tenant.leases.build(name: params["lease"]["name"],
+												 amount: params["lease"]["amount"],
+												 description: params["lease"]["description"],	
+												 interval: params["lease"]["interval"],
+												 tenant_id: params["lease"]["tenant_id"],
+												 file: params["lease"]["file_file_name"]
+												)
+			@lease.amount = @lease.amount.to_f * 100		
+
+			if @lease.save
+				redirect_to @property
+			else
+				render :new
+			end		
+		end	
 	end
 
 	def tenant_applications
 		@tenant = current_tenant
-		@lease = @tenant.lease
+		@leases = @tenant.leases
 	end
 
 	def pending_applications	
+
 		@landlord = current_landlord		
 		@unapproved_leases_array = []
 		current_landlord.properties.each do |property|

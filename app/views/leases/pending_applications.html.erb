@@ -4,16 +4,30 @@
 
 		<% @unapproved_leases_array.each do |unapproved_lease| %>
 
-		<% unapproved_lease.each do |lease| %>
-			<div class="show-property">
-				<h3><%= lease.name %></h3>
-				<p>For Property: <%= lease.property.address %></p>
-				<%= lease.description %>
-				<p>Rent Per Month: <%= lease.amount %></p>
-				<p>Bill me every <%= lease.interval %> month.</p>
-			</div>
-		<% end %>
+			<% unapproved_lease.each do |lease| %>
 
+				<%= link_to unapproved_lease_path(lease) do %>
+					<div class="show-property">
+						<div class="row">
+							<div class="col-md-4">
+								<h2><%= lease.name %></h2>
+								<p>For Property: <%= lease.property.address %></p>
+								<p>Rent Per Month: <%= lease.amount %></p>
+								<p>I'd like to be billed every <%= lease.interval %> month(s).</p>
+							</div>
+							<div class="col-md-8">
+									<h4> View <i class="fa fa-eye"></i></h4>
+							<hr>
+									<h4>About Me:</h4>
+									<p><%= lease.description %></p>
+							<hr>	
+							</div>
+						</div>
+					</div>
+				<% end %>
+			<% end %>
 		<% end %>
 
 </div>
+
+

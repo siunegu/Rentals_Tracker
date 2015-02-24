@@ -40,20 +40,21 @@
     
       <% @leases.each do |lease, tenant| %>
         <% if @property.leases %>
+
           <%= link_to property_lease_path(@property, lease) do %>
             <div class="property-leases">
-              <% if lease.tenant %>
-              <p>Name: <%= lease.tenant.name %></p>
-              <% end %>
-              <p>Rate: <%= lease.amount %> rent per. Month</p>
+                <p>Name: <%= lease.tenant.name %></p>
+                <p>Rate: <%= lease.amount %> rent per. Month</p>
             </div>
-          <% end %>
+          <% end %>  
+
+        <% elsif @leases.count == 0 %>  
+
+          <p>You have No Lease Agreements to List.</p>
+          
         <% end %>
       <% end %>   
 
-      <% if @leases.count == 0 %>
-          <p>You have No Lease Agreements to List.</p>
-      <% end %> 
 
   </div>
 

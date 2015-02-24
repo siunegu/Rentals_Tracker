@@ -1,18 +1,26 @@
 <h1>My Pending Applications</h1>
 
 <div class="container">
-	<h3>Application For: <%= @lease.property.address %></h3>
-	<% if @lease.approved %>
+	<div class="row show-property">
+		<% @leases.each do |lease| %>
 
-		<div class="pending-green-box">
-			Status: Approved
+		<div class="col-md-9">
+			<h3>My Lease Application For: <strong><%= lease.property.address %></strong></h3>
+			<small>Contact <%= lease.landlord.name %> at <em><%= lease.landlord.email %></em></small>
+
+		</div>
+		<div class="col-md-3">
+			<% if lease.approved %>
+			<div class="pending-green-box">
+				<h4>Status: Approved  <i class="fa fa-check"></i></h4>
+			</div>
+			<% else %>
+			<div class="pending-red-box">
+				<h4>Status: Pending  <i class="fa fa-times"></i></h4>
+			</div>
+			<% end %>	
 		</div>
 
-	<% else %>
-
-		<div class="pending-red-box">
-			Status: Pending
-		</div>
-
-	<% end %>
+		<% end %>	
+	</div>
 </div>

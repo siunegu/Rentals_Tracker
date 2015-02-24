@@ -66,11 +66,12 @@
 #
 
 Rails.application.routes.draw do
+
   resources :messages
 
   get 'landlord_messages' => 'messages#landlord_messages'
-  get 'tenant_messages' => 'messages#tenant_messages'
-	
+  get 'tenant_messages' => 'messages#tenant_messages'  
+
   resources :properties do
   	resources :leases do
       member do
@@ -86,6 +87,7 @@ Rails.application.routes.draw do
 
   # Pending Applications:
   get 'pending_applications' => 'leases#pending_applications'
+  get 'unapproved_lease' => 'leases#unapproved_lease'
   get 'tenant_applications' => 'leases#tenant_applications'
   
 

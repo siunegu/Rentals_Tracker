@@ -7,10 +7,14 @@ class PropertiesController < ApplicationController
 	end	
 
 	def tenant_properties
-		@property = current_tenant.property
+
+		@leases = current_tenant.leases.where(approved: true)
+
+		# @property = @leases[0].property
+
 	end
 
-	# All the Properties ( it's a feature okay! )
+	# All the Properties ( it's a feature okay! ):
 	def index
 		@properties = Property.all
 	end

@@ -30,6 +30,8 @@ gem 'stripe'
 
 # Image Uploads
 gem 'paperclip'
+gem 'aws-sdk'
+
 # gem 'groupdate'
 # gem 'paper_trail'
 

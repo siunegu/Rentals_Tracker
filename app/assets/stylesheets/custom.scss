@@ -437,7 +437,7 @@ a:hover {
 
 .show-property {
   background-color: #fff;
-  padding: 35px 45px;
+  padding: 40px 45px;
   margin: 4px auto;
 
   border: 1px solid rgba(0, 0, 0, 0.1);  
@@ -456,6 +456,8 @@ a:hover {
 
 .pending-red-box {
   background-color: #F5A3A3;
+  text-align: center;  
+  color: #CC2B2B;
   padding: 25px;
   border: 1px solid #FEF;
   border-radius: 4px;
@@ -463,6 +465,8 @@ a:hover {
 
 .pending-green-box {
   background-color: #EFE;
+  text-align: center;
+  color: #2BCC2B;
   padding: 25px;
   border: 1px solid #FEF;
 }
@@ -515,17 +519,16 @@ div.btn.btn-file > div > label {
 // This controls the upload button's style
 
 .btn-identification {
-  width: 100%;
+  width: 45%;
+  margin: 3em auto;
   font-weight: 400;
-  margin-bottom: 1px;
   -webkit-font-smoothing: antialiased;
   height: 30px;
   text-decoration: none;
 
-  display: block;
+  display: inline-block;
   position: relative;
   padding: 0 30px;
-  height: 40px;
 
   background: #12a3ff;
 
@@ -546,12 +549,11 @@ div.btn.btn-file > div > label {
   border-radius: 3px;  
 
   transition: all 0.5s ease;
-  
 }
 
 .btn-identification:hover {
-  color: #f7f7f7 !important;
-  background: #1275FF !important;
+  color: #f7f7f7;
+  background: #1275FF;
   border: 1px solid rgba(0, 0, 0, 0.4);  
 }
 

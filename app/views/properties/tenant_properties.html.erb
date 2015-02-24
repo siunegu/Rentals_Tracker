@@ -1,13 +1,19 @@
 <h1>My Place</h1>
-<div class="container show-property">
-	
+<div class="container show-property">	
 
 	<div class="container">
-	  <% if @property %>
-	    <h3><%= @property.address %></h3>
-	    <p><%= number_to_currency(@property.price) %> per month.</p>
-	  <% else %>
+
+	  <% if @leases.count > 0 %>
+	  	<% @leases.each do |lease| %>
+	    <h3><%= lease.tenant.name %></h3>
+	    <p>Signed At: <%= lease.created_at %></p>
+	    <p>Paying Every <%= lease.interval %> Month(s).</p>
+	    <p>I'm paying <%= number_to_currency(lease.property.price) %> per month.</p>
+	    <% end %>
+	  <% elsif %>
 	    <p>You do not have a property, get a job!</p>
 	  <% end %>
+
 	</div>
 </div>
+

@@ -1,6 +1,6 @@
-<h2>
+<h1>
 Application for <%= @property.address %>.
-</h2>
+</h1>
 
 <h3>
 <% if current_tenant %>
@@ -12,6 +12,7 @@ Application for <%= @property.address %>.
 
 <%= simple_form_for [@property, @lease] do |f| %>
 	<div class="form-margins">
+
 		<% if current_landlord %>
 			<%= f.input :name, placeholder: "Give it a name!" %>
 			<%= f.input :amount, placeholder: "Amount of each Payment per Month." %>
@@ -21,20 +22,91 @@ Application for <%= @property.address %>.
 			<%= f.association :tenant, collection: Tenant.all %>
 			<%= f.button :submit, "Approve and Save!", class: 'btn-submit' %>
 		<% else %>
-			<%= f.input :name, placeholder: "Your Name eg. Bob" %>
+			<%= f.input :name, input_html: { value: current_tenant.name }, placeholder: "Your Name eg. Bob" %>
 			<%= f.input :amount, placeholder: "Your Proposed Payment per Month." %>
 			<%= f.input :interval, placeholder: "How often do you want to be billed for rent? eg. 1 is per month." %>
 			<%= f.input :description, as: :text, placeholder: "Write something about yourself." %>
 
 			<hr>
+			
+			<h2>Proof of Identification</h2>
 
-			<h3>Proof of Identification</h3>
-			<p>We need a valid proof of your identity for bookeeping and legal purposes only. We will not disclose your information to anyone.</p>
-		  <div class="btn btn-identification btn-file">
-				<%= f.input "Upload My id!", as: :file %>
+				<div class="show-property">
+					<p>We need a valid proof of your identity for bookeeping and legal purposes only. We will not disclose your information to anyone.</p>
+					<p> You'll need <em>100 points</em> in total to pass!</p>
+					<hr>
+					<div class="row">	
+						<div class="col-md-6">
+							<h4>Documents Accepted by Identification Check</h4>
+						</div>
+						<div class="col-md-6">
+							<h4>Points per Document</h4>
+						</div>
+					</div>
+
+					<div class="row">	
+						<div class="col-md-6">
+							<p>Driver's License / Birth Certificate</p>
+						</div>
+						<div class="col-md-6">
+							<p>70</p>
+						</div>
+					</div>
+
+					<div class="row">	
+						<div class="col-md-6">
+							<p>Other Photo ID eg. Pension, Student Card</p>
+						</div>
+						<div class="col-md-6">
+							<p>40</p>
+						</div>
+					</div>			
+
+					<div class="row">	
+						<div class="col-md-6">
+							<p>2 recent Rent Receipts /􏰀 Tenant Ledger</p>
+						</div>
+						<div class="col-md-6">
+							<p>25</p>
+						</div>
+					</div>			
+			
+					<hr>
+
+					<div class="row">	
+						<div class="col-md-12">
+							<h4>Documents on which your name and current address appear:</h4>
+						</div>
+						<div class="col-md-12">
+							<p>Car registration certificate</p>
+							<p>Rates Notice</p>
+							<p>Gas Account</p>
+							<p>Telephone Account</p>
+							<p>Bank / Credit Card Statement</p>
+						</div>
+					</div>	
+					
+					<hr>
+
+					<div class="row">	
+						<div class="col-md-12">
+							<h4>Documents Accepted for Proof of Income:</h4>
+						</div>
+						<div class="col-md-12">
+							<p>2 Most Recent Payslips</p>
+							<p>Letter from accountant (if self employed) 􏰀Bank statements</p>
+						</div>
+					</div>	
+
+					<br>		
+
+				  <div class="btn btn-identification btn-file">
+						<%= f.input "Upload My Proof!", as: :file, multiple: true %>
+					</div>				
+				</div>
+
 			</div>
-	</div>
-	
-		<%= f.button :submit, "Submit Your Application!", class: 'btn-submit' %>
+			
+			<%= f.button :submit, "Submit Your Application!", class: 'btn-submit' %>
 		<% end %>
 <% end %>
