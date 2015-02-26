@@ -4,6 +4,8 @@ class LeasesController < ApplicationController
 	def show
 		@property = Property.find(params[:property_id])
 		@lease = @property.leases.find(params[:id])
+		@tenant = @lease.tenant
+		@credit_card = @lease.tenant.credit_card
 	end
 
 	def new	
@@ -98,7 +100,7 @@ class LeasesController < ApplicationController
 									    :amount => @lease.property.price, # in cents
 									    :currency => "usd",
 									    :interval => "month",
-									    :name => @tenant.property.address,
+									    :name => @tenant.name,
 									    :id => "lease_#{@lease.id}"
 									  )
 
@@ -110,15 +112,16 @@ class LeasesController < ApplicationController
 			)			
 
 			@tenant.stripe_id = new_customer.id
-
 			@tenant.credit_card.stripe_id = token
-
 			@tenant.lease.stripe_id = stripe_plan.id
-			
-			@tenant.lease.save
-	
-			redirect_to property_lease_path(@lease)
 
+			if !@tenant.stripe_id
+				binding.pry
+				@tenant.lease.save
+				redirect_to property_lease_path(@lease)
+			else
+				redirect_to root_path
+			end
 		else
 			redirect_to add_credit_card_property_lease_path(@property, @lease)
 		end

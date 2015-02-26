@@ -20,13 +20,14 @@ Application for <%= @property.address %>.
 			<%= f.input :interval, placeholder: "eg. (An interval of 2 would mean billing every 2 Months.)" %>
 			<%= f.input :approved, inline_label: "Approve this Lease?" %>
 			<%= f.association :tenant, collection: Tenant.all %>
-			<%= f.button :submit, "Approve and Save!", class: 'btn-submit' %>
+			<%= f.button :submit, "APPROVE & SAVE", class: "btn btn-submit" %>
 		<% else %>
+			<div class="show-property">
 			<%= f.input :name, input_html: { value: current_tenant.name }, placeholder: "Your Name eg. Bob" %>
 			<%= f.input :amount, placeholder: "Your Proposed Payment per Month." %>
 			<%= f.input :interval, placeholder: "How often do you want to be billed for rent? eg. 1 is per month." %>
 			<%= f.input :description, as: :text, placeholder: "Write something about yourself." %>
-
+			</div>
 			<hr>
 			
 			<h2>Proof of Identification</h2>
@@ -39,7 +40,7 @@ Application for <%= @property.address %>.
 						<div class="col-md-6">
 							<h4>Documents Accepted by Identification Check</h4>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-6 col-center">
 							<h4>Points per Document</h4>
 						</div>
 					</div>
@@ -48,7 +49,7 @@ Application for <%= @property.address %>.
 						<div class="col-md-6">
 							<p>Driver's License / Birth Certificate</p>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-6 col-center">
 							<p>70</p>
 						</div>
 					</div>
@@ -57,7 +58,7 @@ Application for <%= @property.address %>.
 						<div class="col-md-6">
 							<p>Other Photo ID eg. Pension, Student Card</p>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-6 col-center">
 							<p>40</p>
 						</div>
 					</div>			
@@ -66,7 +67,7 @@ Application for <%= @property.address %>.
 						<div class="col-md-6">
 							<p>2 recent Rent Receipts /􏰀 Tenant Ledger</p>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-6 col-center">
 							<p>25</p>
 						</div>
 					</div>			
@@ -95,18 +96,20 @@ Application for <%= @property.address %>.
 						<div class="col-md-12">
 							<p>2 Most Recent Payslips</p>
 							<p>Letter from accountant (if self employed) 􏰀Bank statements</p>
+							<small><em>* You may upload multiple documents at a time.</em></small>
 						</div>
 					</div>	
 
 					<br>		
 
 				  <div class="btn btn-identification btn-file">
-						<%= f.input "Upload My Proof!", as: :file, multiple: true %>
-					</div>				
+						<%= f.input "Upload My Proof!", as: :file, multiple: true %>						
+					</div>
+					<br>				
 				</div>
-
+			<%= f.button :submit, "Submit Your Application!", class: 'btn btn-submit' %>
 			</div>
 			
-			<%= f.button :submit, "Submit Your Application!", class: 'btn-submit' %>
+			
 		<% end %>
 <% end %>

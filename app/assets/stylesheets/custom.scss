@@ -93,7 +93,6 @@ a:hover {
   }
 }
 
-
 .fa-big-icon {
   font-size: 1.9em !important;
   transition: all 0.3s ease;
@@ -102,6 +101,33 @@ a:hover {
 .fa-big-icon:hover {
   color: #563d7c;
 }
+
+/*******************************
+           Main Page 
+*******************************/
+
+ 
+
+
+.hvr-bounce-in {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.hvr-bounce-in:hover, .hvr-bounce-in:focus, .hvr-bounce-in:active {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+  transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+}
+
 /*******************************
            Buttons 
 *******************************/
@@ -109,38 +135,47 @@ a:hover {
 // Used importants cause Bootstrap buttons was being a pain and overriding my styles.
 // * Note to Self: Will need to load Bootstrap BEFORE custom styles.
 .btn-submit {
-  font-weight: 400  !important;
-  margin: 35px auto !important;
-  width: 100% !important;
-  -webkit-font-smoothing: antialiased !important;
-  height: 30px !important;
-  text-decoration: none !important;
-
-  display: block !important;
-  position: relative !important;
-  padding: 0 30px !important;
-  height: 40px !important;
-
-  background: #4cae4c !important;
-
-
-  font-size: 16px !important;
-  line-height: 30px !important;
-  color: white !important;
-  font-weight: bold !important;
-  border: 1px solid rgba(0, 0, 0, 0.2) !important;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2) !important;
-
-  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.25) !important;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
-
-  -moz-border-radius: 3px !important;
-  -webkit-border-radius: 3px !important;
-  border-radius: 3px !important;  
-
-  transition: all 0.5s ease !important;
+  width: 100%;
+  display: inline-block;
+  margin: 30px auto;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;  
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  height: 30px;
+  text-decoration: none;
+  display: block;
+  position: relative;
   
+  height: 40px;
+  font-size: 16px;
+  line-height: 30px;
+  color: #FFF !important;
+  font-weight: bold;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;  
+
+  transition: all 0.5s ease;  
+  background: #4cae4c !important;
 }
 
 .btn-submit:hover {
@@ -262,7 +297,6 @@ a:hover {
   height: 40px;
 
   background: #563d7c;
-
 
   font-size: 16px;
   line-height: 30px;
@@ -416,10 +450,39 @@ a:hover {
   top: 50%;
 }
 
-.new-lease {
-  color: #4cae4c;
+.new-lease-container {
+  text-align: center;
+  margin: 0 auto;
   float: right;
-  padding-right: 25px;
+}
+
+.new-lease-container:after {
+  content: "";
+  display: table;
+  clear: both; 
+}
+
+.new-lease.fa-plus-circle {
+  color: #4cae4c;  
+
+  float: right;
+  position: relative;
+  bottom: 8px;
+  margin-right: 10px;
+
+  font-size: 1.5em;  
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0.4s;  
+  border-radius: 100%;
+  width: 35px;
+  padding: 1px;
+  height: 35px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.new-lease.fa-plus-circle:hover {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+  transition-delay: 0s;  
 }
 
 /*******************************
@@ -448,11 +511,11 @@ a:hover {
 }
 
 .property-leases {
-  color: #333;
-  background-color: red;
+  color: #FFF;
+  background-color: #563d7c;
   padding: 25px;
-  border: 1px solid #FEF;
-  border-radius: 4px;
+  border: 2px solid #FEF;
+  border-radius: 6px;
 }
 
 .pending-red-box {
@@ -484,6 +547,12 @@ textarea.form-control {
   margin: 6rem auto;
 }
 
+// Bootstrap Override
+.form-control:focus {
+  border-color: #7c5bae !important;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(107, 76, 154, 0.6) !important;  
+}
+
 // This makes the uplaod button stylable
 
 .btn-file {
@@ -511,7 +580,7 @@ textarea.form-control {
 
 div.btn.btn-file > div > label {
   position: relative;
-  top: 2px;
+  bottom: 2px;  
   color: #fff;
   font-weight: 400;
   font-size: 16px;
@@ -565,14 +634,20 @@ div.btn.btn-file > div > label {
 
 footer {
   width: 100%;
-  margin-top: 15%;  
-  padding: 15px 30px;
+  clear: both;
   position: relative;
-  bottom: 0;
+  height: 5em;
+  margin-top: 30em;
+  margin-bottom: 30px;  
+  padding: 15px 30px;
+  display: block;
+  bottom: 30px;
+  
   a {
     color: red;
   }
 }
+
 
 footer > p {
   position: relative;

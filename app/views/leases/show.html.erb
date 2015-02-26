@@ -1,35 +1,43 @@
-<h1>Lease Info</h1>
-<div class="container show-property">
-	<div class="col-md-8">
+<div class="container">
 
-		<h3>Tenant Name:</h3>
-		<p><%= @lease.tenant.name %></p>
 
-		<h3>Agreed Monthly Amount:</h3>
-		<p><%= @lease.amount %> rent per. Month</p>
+
+	<div class="row show-property">
+	
+		<div class="col-md-7">
+			<h1>Lease Info</h1>
+			<h3><i class="fa fa-info-circle"></i> <%= @lease.tenant.name %></h3>
+
+			<h3><i class="fa fa-calendar"></i> $<%= @lease.amount %> rent per <%= @lease.interval %> Month</h3>
+			<%= link_to new_message_path do %>
+			<h3><i class="fa fa-paper-plane"></i> <%= @lease.tenant.email %></h3>
+						<% end %>
+			<h3><i class="fa fa-certificate"></i> <%= @lease.created_at %></h3>
+
+		</div>
+
+		<div class="col-md-5">			
+			<hr>
+				<% if current_landlord == @property.landlord %>
+					<% if @credit_card %>		
+						<div class="pending-green-box">
+							<h3><i class="fa fa-credit-card"></i> Credit Card</h3>
+							<h4>Card attached. Now Billing. <i class="fa fa-check"></i></h4>
+						</div>
+					<% else %>
+						<div class="pending-red-box">
+							<h3><i class="fa fa-credit-card"></i> Credit Card</h3>
+							<strong>Send the Link below to attach Credit Card:</strong>
+						</div>					
+						
+			      <%= link_to 'ADD TENANT PAYMENT DETAILS', add_credit_card_property_lease_path( @property, @lease), class: "btn btn-form" %>  					
+					<% end %>
+		    <% end %>
+	    <hr>
+		</div>
+	</div>
 		
-		<h3>Email:</h3>
-		<p><%= @lease.tenant.email %></p>
-		<p>Contact Button</p>
-
-		<h3>Created At:</h3>
-		<p><%= @lease.created_at %></p>
-
     <% if current_landlord == @property.landlord %>
       <%= link_to 'EDIT LEASE', edit_property_path(@property), class: "btn btn-form" %>       
     <% end %>
-	</div>
-	<div class="col-md-4">
-		<h3>Credit Card Attached?</h3>
-
-			<% if @tenant %>		
-				There's a Card attached.
-			<% else %>
-				There needs to have tenant's credit card details attached to begin.
-			<% end %>
-
-    <% if current_landlord == @property.landlord %>
-      <%= link_to 'ADD TENANT PAYMENT DETAILS', add_credit_card_property_lease_path( @property, @lease), class: "btn btn-form" %>       
-    <% end %>
-	</div>
 </div>

@@ -29,15 +29,21 @@
       <%= link_to 'EDIT', edit_property_path(@property), class: "btn btn-form" %>       
     <% end %>
   </div>
+  
+
 
   <div class="col-md-4">
     <h3>
       This Property's Leases
-      <%= link_to new_property_lease_path(@property) do %>
-        <i class="fa fa-plus-circle new-lease"></i>
-      <% end %>
+      <div class="new-lease-container">
+        <%= link_to new_property_lease_path(@property) do %>
+          <i class="fa fa-plus-circle new-lease"></i>
+        <% end %>
+      </div>
     </h3>
-    
+
+    <hr>
+
       <% @leases.each do |lease, tenant| %>
         <% if @property.leases %>
           
