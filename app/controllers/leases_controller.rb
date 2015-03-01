@@ -103,7 +103,7 @@ class LeasesController < ApplicationController
 									    :name => @tenant.name,
 									    :id => "lease_#{@lease.id}"
 									  )
-
+			binding.pry
 			new_customer = Stripe::Customer.create(
 				:card => token,
 				:plan => "lease_#{@lease.id}",

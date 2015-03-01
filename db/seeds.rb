@@ -113,7 +113,7 @@ CreditCard.destroy_all
 		landlord_id: landlord_1.id,
 		property_id: p1.id,
 		tenant_id: tenant_2.id,
-		approved: true
+		approved: false
 	)
 
 	lease_3 = Lease.create!(
