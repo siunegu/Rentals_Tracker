@@ -6,14 +6,14 @@ Application for <%= @property.address %>.
 <% if current_tenant %>
 	You are <%= current_tenant.name %>, please fill out your details below...
 <% else %>
-	You are <%= current_landlord.name %>, review this application!
+	You are <%= current_landlord %>, review this application!
 <% end %>
 </h3>
 
 <%= simple_form_for [@property, @lease] do |f| %>
 	<div class="form-margins">
 
-		<% if current_landlord %>
+		<% if current_landlord.properties.include?(@property) && landlord_signed_in? %>
 			<%= f.input :name, placeholder: "Give it a name!" %>
 			<%= f.input :amount, placeholder: "Amount of each Payment per Month." %>
 			<%= f.input :description, as: :text, placeholder: "Write something about " %>
@@ -21,7 +21,7 @@ Application for <%= @property.address %>.
 			<%= f.input :approved, inline_label: "Approve this Lease?" %>
 			<%= f.association :tenant, collection: Tenant.all %>
 			<%= f.button :submit, "APPROVE & SAVE", class: "btn btn-submit" %>
-		<% else %>
+		<% elsif tenant_signed_in? %>
 			<div class="show-property">
 			<%= f.input :name, input_html: { value: current_tenant.name }, placeholder: "Your Name eg. Bob" %>
 			<%= f.input :amount, placeholder: "Your Proposed Payment per Month." %>

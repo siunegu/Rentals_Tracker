@@ -5,8 +5,8 @@
 		<% @unapproved_leases_array.each do |unapproved_lease| %>
 
 			<% unapproved_lease.each do |lease| %>
-
-				<%= link_to unapproved_lease_path(lease) do %>
+	
+				<%= link_to property_path(lease.property) do %>
 					<div class="show-property">
 						<div class="row">
 							<div class="col-md-4">

@@ -63,6 +63,7 @@ class LeasesController < ApplicationController
 			@unapproved_leases_array << property.leases.where(approved: false)
 		end
 		@unapproved_leases_array
+
 	end
 
 	def edit

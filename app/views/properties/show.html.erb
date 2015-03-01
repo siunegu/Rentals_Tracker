@@ -48,13 +48,13 @@
         <% if @property.leases %>
           
           <%= link_to property_lease_path(@property, lease) do %>
-            <% if lease.approved == true %>
-              <div class="property-leases">
+            <% if lease.approved || lease.stripe_id %>
+              <div class="property-leases-approved">
                   <p>Name: <%= lease.tenant.name %></p>
                   <p>Rate: <%= lease.amount %> rent per. Month</p>
               </div>
             <% else %>
-              <div class="property-leases">
+              <div class="property-leases-pending">
                   <p>Name: <%= lease.tenant.name %></p>
                   <p>Rate: <%= lease.amount %> rent per. Month</p>
               </div>              
