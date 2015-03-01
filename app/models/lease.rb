@@ -16,4 +16,7 @@ class Lease < ActiveRecord::Base
 	belongs_to :property
 	belongs_to :landlord 
 	
+	def self.amount
+		@amount = Lease.amount * 10000
+	end
 end

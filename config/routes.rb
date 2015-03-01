@@ -72,6 +72,7 @@ Rails.application.routes.draw do
   get 'landlord_messages' => 'messages#landlord_messages'
   get 'tenant_messages' => 'messages#tenant_messages'  
 
+  # Property in Properties, Leases Lease's 'Adding Credit Card' action 
   resources :properties do
   	resources :leases do
       member do
@@ -80,6 +81,8 @@ Rails.application.routes.draw do
       end
     end
   end
+  
+  get 'save_credit_card_result' => 'leases#save_credit_card_result'
 
   # Users Properties Index:
   get 'landlord_my_properties' => 'properties#landlord_properties'

@@ -12,9 +12,9 @@ Thankyou for Applying <%= @lease.tenant.name %>! Your Application has been Appro
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="<%= ENV['STRIPE_SECRET_KEY'] %>"
-    data-amount="<%= @lease.amount %>"
+    data-amount="<%= @amount * 100 %>"
     data-name="INNKEEPER"
-    data-description="Create a Plan of $<%= @display_amount  %> per month"
+    data-description="Create a Plan of $<%= @amount %> per month"
     data-label="Continue with © Stripe"
     data-image="/128x128.png">
   </script>

@@ -84,8 +84,7 @@ class LeasesController < ApplicationController
 		@property = Property.find(params[:property_id])
 		@lease = @property.leases.find(params[:id])
 
-		amount = (@lease.amount).to_f
-		@display_amount = amount / 100
+		@amount = (@lease.amount).to_f
 	end
 
 	def save_credit_card
@@ -96,37 +95,35 @@ class LeasesController < ApplicationController
 		if params[:stripeToken]
 			token = params[:stripeToken]
 
-			stripe_plan = Stripe::Plan.create(
-									    :amount => @lease.property.price, # in cents
-									    :currency => "usd",
-									    :interval => "month",
-									    :name => @tenant.name,
-									    :id => "lease_#{@lease.id}"
-									  )
-			binding.pry
-			new_customer = Stripe::Customer.create(
-				:card => token,
-				:plan => "lease_#{@lease.id}",
-				:email => @tenant.email,
-				:description => @property.address
-			)			
-
-			@tenant.stripe_id = new_customer.id
-			@tenant.credit_card.stripe_id = token
-			@tenant.lease.stripe_id = stripe_plan.id
-
-			if !@tenant.stripe_id
-				binding.pry
-				@tenant.lease.save
-				redirect_to property_lease_path(@lease)
+			if Stripe::Plan
+				redirect_to property_lease_path(@property, @lease), flash: {error: "This Subscription Already Exists!"}
 			else
-				redirect_to root_path
-			end
-		else
-			redirect_to add_credit_card_property_lease_path(@property, @lease)
-		end
+				stripe_plan = Stripe::Plan.create(
+										    :amount => @lease.property.price, # in cents
+										    :currency => "usd",
+										    :interval => "month",
+										    :name => @tenant.name,
+										    :id => "lease_#{@lease.id}"
+										  )
 
-	end	
+				new_customer = Stripe::Customer.create(
+					:card => token,
+					:plan => "lease_#{@lease.id}",
+					:email => @tenant.email,
+					:description => @property.address
+				)			
+				
+				@tenant.stripe_id = new_customer.id
+				@tenant.credit_card.stripe_id = token
+				@tenant.lease.stripe_id = stripe_plan.id
+
+				redirect_to save_credit_card_result_path, flash: {notice: "Your Subscription has been created!"}
+			end
+		end	
+	end
+
+	def save_credit_card_result
+	end
 
 	def destroy
 		@lease.destroy

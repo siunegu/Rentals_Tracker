@@ -97,7 +97,7 @@ CreditCard.destroy_all
 	lease_1 = Lease.create!(
 		name: tenant_1.name,
 		description: "I have been waiting. I've been waiting all day. Waiting for Gus to send one of his men to kill me. And it's you. Who do you know, who's okay with using children, Jesse? Who do you know... who's allowed children to be murdered... hmm? ",				
-		amount: 2900,
+		amount: 290000,
 		interval: 1,
 		landlord_id: landlord_1.id,
 		property_id: p1.id,
@@ -108,7 +108,7 @@ CreditCard.destroy_all
 	lease_2 = Lease.create!(
 		name: tenant_2.name,
 		description: "I have been waiting. I've been waiting all day. Waiting for Gus to send one of his men to kill me. And it's you. Who do you know, who's okay with using children, Jesse? Who do you know... who's allowed children to be murdered... hmm? ",		
-		amount: 930,
+		amount: 93000,
 		interval: 1,
 		landlord_id: landlord_1.id,
 		property_id: p1.id,
@@ -119,7 +119,7 @@ CreditCard.destroy_all
 	lease_3 = Lease.create!(
 		name: tenant_3.name,
 		description: "I have been waiting. I've been waiting all day. Waiting for Gus to send one of his men to kill me. And it's you. Who do you know, who's okay with using children, Jesse? Who do you know... who's allowed children to be murdered... hmm? ",				
-		amount: 1000,
+		amount: 100000,
 		interval: 1,
 		landlord_id: landlord_1.id,
 		property_id: p1.id,
@@ -130,7 +130,7 @@ CreditCard.destroy_all
 	lease_4 = Lease.create!(
 		name: tenant_3.name,
 		description: "I have been waiting. I've been waiting all day. Waiting for Gus to send one of his men to kill me. And it's you. Who do you know, who's okay with using children, Jesse? Who do you know... who's allowed children to be murdered... hmm? ",				
-		amount: 1200,
+		amount: 120000,
 		interval: 1,
 		landlord_id: landlord_2.id,
 		property_id: p2.id,
