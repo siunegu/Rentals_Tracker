@@ -1,43 +1,49 @@
-<div class="row">
 
-<% if !tenant_signed_in? || !landlord_signed_in? %>
-
-	<h1>Welcome to INNKEEPER!</h1>
-	<h2>Landlords is an online subscription management service for renting and tenancy.</h2>
-
-
-<% elsif landlord_signed_in? %>
-
-	<h1>Welcome <%= current_landlord.name %>!</h1>
-
+<div id="main-page-bg">
+  <div id="main-page-color">
+    <div class="container">
+    <div class="row">
+      <% if !tenant_signed_in? || !landlord_signed_in? %>
   
-    <% @properties.each do |property, landlord| %>
+      <h1>Welcome to INNKEEPER!</h1>
+      <h2>Landlords is an online subscription management service for renting and tenancy.</h2>
+
+
+      <% elsif landlord_signed_in? %>
+
+      <h1>Welcome <%= current_landlord.name %>!</h1>
+
+
+      <% @properties.each do |property, landlord| %>
       <div class="col-md-12">
         <div class="caption">
-        <%= link_to(property) do %>
-		        <div class="show-property">
-              <h3><%= property.address %></h3>
-              <p><%= number_to_currency(property.price) %> per month.</p>
-              <p><%= property.description %></p>
-            </div>
-        <% end %>
+          <%= link_to(property) do %>
+          <div class="show-property">
+            <h3><%= property.address %></h3>
+            <p><%= number_to_currency(property.price) %> per month.</p>
+            <p><%= property.description %></p>
+          </div>
+          <% end %>
         </div>
       </div>
-    <% end %>
-	
-
-<% elsif current_tenant.lease == nil %>		
-
-		<h1>First time around?</h1>
-		<h3> That's cool, you'll need to update your lease application details to get started.</h3>
-		<%= link_to 'Register your Lease Application now!', properties_path, class: 'btn btn-form' %>
-
-<% else %>		
-	
-	<h1>Welcome to INNKEEPER!</h1>
-	<h2>Landlords is an online subscription management service for renting and tenancy.</h2>
-
-<% end %>
+      <% end %>
 
 
+      <% elsif current_tenant.lease == nil %>		
+
+      <h1>First time around?</h1>
+      <h3> That's cool, you'll need to update your lease application details to get started.</h3>
+      <%= link_to 'Register your Lease Application now!', properties_path, class: 'btn btn-form' %>
+
+      <% else %>		
+
+      <h1>Welcome to INNKEEPER!</h1>
+      <h2>Landlords is an online subscription management service for renting and tenancy.</h2>
+
+      <% end %>
+
+
+    </div>
+    </div>
+  </div>
 </div>

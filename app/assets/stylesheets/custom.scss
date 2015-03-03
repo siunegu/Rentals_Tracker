@@ -109,7 +109,37 @@ a:hover {
            Main Page 
 *******************************/
 
- 
+
+#main-page-color {
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  padding: 15%;
+  overflow: hidden;
+  position: absolute;
+  background-color: rgba(86, 61, 124, 0.97);
+}
+
+#main-page-bg {
+  color: #FFF;
+}
+
+#main-page-bg:before {
+  height: 100%;
+  z-index: -1;
+  background-image: url('fontpage-bg.jpg');
+  background-repeat: none;
+  background-size: cover;
+  position: absolute;
+  top:0;
+  left:0;
+  content: " ";
+  width: 100%;
+  float: left;  
+}
+
+
 .hvr-bounce-in {
   display: inline-block;
   vertical-align: middle;
@@ -663,26 +693,28 @@ footer {
   clear: both;
   position: relative;
   height: 5em;
-  margin-top: 30em;
+  margin-top: 40em;
   margin-bottom: 30px;  
   padding: 15px 30px;
   display: block;
   bottom: 30px;
   
   a {
-    color: red;
+    color: #E8750E;
+  }
+  a:hover {
+    color: #FF211D;
   }
 }
 
-
-footer > p {
+footer p {
   position: relative;
   top: 5px;
-  color: #DDD;
+  color: #DDD !important;
 }
 
-.fa-footer-icon {
-  color: gray;
+a .fa-footer-icon {
+  color: #FFF;
   position: relative;
   bottom: 12px;
   font-size: 3em !important;
