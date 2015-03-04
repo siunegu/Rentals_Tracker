@@ -13,7 +13,7 @@ Application for <%= @property.address %>.
 <%= simple_form_for [@property, @lease] do |f| %>
 	<div class="form-margins">
 
-		<% if current_landlord.properties.include?(@property) && landlord_signed_in? %>
+		<% if landlord_signed_in? %>
 			<%= f.input :name, placeholder: "Give it a name!" %>
 			<%= f.input :amount, placeholder: "Amount of each Payment per Month." %>
 			<%= f.input :description, as: :text, placeholder: "Write something about " %>

@@ -1,3 +1,5 @@
+<div class="container">
+<div class="row">
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -5,7 +7,7 @@
     <%= f.label :email %>
     <%= f.email_field :email, :autofocus => true, class: "form-control" %>
   </div>
-
+Hi
   <div class="form-group">
     <%= f.label :password %>
     <%= f.password_field :password, class: "form-control" %>
@@ -24,3 +26,5 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
+</div>

@@ -1,7 +1,5 @@
 <div class="container">
 
-
-
 	<div class="row show-property">
 	
 		<div class="col-md-7">
@@ -18,7 +16,7 @@
 
 		<div class="col-md-5">			
 			<hr>
-				<% if current_landlord == @property.landlord %>
+				<% if current_landlord == @property.landlord && landlord_signed_in? || tenant_signed_in? %>
 					<% if @credit_card %>		
 						<div class="pending-green-box">
 							<h3><i class="fa fa-credit-card"></i> Credit Card</h3>

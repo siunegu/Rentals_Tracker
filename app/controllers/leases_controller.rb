@@ -1,5 +1,5 @@
 class LeasesController < ApplicationController
-	before_filter :authenticate_landlord!, only: [:add_credit_card]
+	# before_filter :authenticate_landlord!, only: [:add_credit_card]
 
 	def show
 		@property = Property.find(params[:property_id])
@@ -24,7 +24,7 @@ class LeasesController < ApplicationController
 												 file: params["lease"]["file_file_name"]
 												)
 
-			@lease.amount = @lease.amount.to_f * 100		
+			@lease.amount = @lease.amount.to_f / 100		
 
 			if @lease.save
 				redirect_to @property
@@ -40,7 +40,7 @@ class LeasesController < ApplicationController
 												 tenant_id: params["lease"]["tenant_id"],
 												 file: params["lease"]["file_file_name"]
 												)
-			@lease.amount = @lease.amount.to_f * 100		
+			@lease.amount = @lease.amount.to_f / 100		
 
 			if @lease.save
 				redirect_to @property
@@ -104,7 +104,7 @@ class LeasesController < ApplicationController
 										    :currency => "usd",
 										    :interval => "month",
 										    :name => @tenant.name,
-										    :id => "lease_#{@lease.id}"
+										    :id => "lease_#{@lease.id}_#{@lease.updated_at.to_i}"
 										  )
 
 				new_customer = Stripe::Customer.create(
