@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require bootstrap-sprockets
-//= require bootstrap
+
 //= require jquery_ujs
 //= require turbolinks
 //= require payment_form
