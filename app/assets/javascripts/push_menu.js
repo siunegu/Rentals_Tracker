@@ -1,5 +1,4 @@
-$(document).ready(function(){
-
+function ready() {
 // Push Menu
 	var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
 		showLeftPush = document.getElementById( 'showLeftPush' ),
@@ -21,5 +20,7 @@ $(document).ready(function(){
 			classie.toggle( showLeftPush, 'disabled' );
 		}
 	}
+} 
 
-});	
+$(document).ready(ready);	
+$(document).on('page:load', ready);
