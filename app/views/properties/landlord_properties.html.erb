@@ -2,7 +2,7 @@
 <h1>My Properties</h1>
 
 <div class="container show-property">
-  
+    <hr>
     <% @properties.each do |property, landlord| %>
       <div class="col-md-12">
         <div class="caption">
@@ -12,6 +12,7 @@
               <p><%= property.description %></p>        
         <% end %>
         </div>
+        <hr>
       </div>
     <% end %>
   

@@ -1,3 +1,11 @@
+/* Full page overflow wrap for Push Menu */
+
+.full-page-wrap {
+	overflow-x: hidden !important;
+	height: 100%;
+	position: relative;
+}
+
 /* General styles for all menus */
 
 #showLeftPush {
