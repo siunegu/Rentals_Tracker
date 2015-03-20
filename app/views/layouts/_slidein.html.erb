@@ -1,0 +1,19 @@
+<% if landlord_signed_in? %>
+<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+	<br>
+	<ul>
+		<li><%= link_to "My Properties", landlord_my_properties_path, class: 'hvr-pulse-shrink' %></li>
+		<li><%= link_to "My Mailer", landlord_messages_path, class: 'hvr-pulse-shrink' %></li>
+		<li><%= link_to "Edit Profile", edit_landlord_registration_path, class: 'hvr-pulse-shrink' %></li>
+		<li><%= link_to "Log Out", destroy_landlord_session_path, method: :delete, class: 'hvr-pulse-shrink' %></li>
+	</ul>  
+</div>  
+<% elsif tenant_signed_in? %>
+<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+	<br>
+	<li><%= link_to "My Properties", tenant_my_properties_path, class: 'hvr-pulse-shrink' %></li>  
+	<li><%= link_to "My Applications", tenant_applications_path, class: 'hvr-pulse-shrink' %></li>  
+	<li><%= link_to "Log Out", destroy_tenant_session_path, method: :delete, class: 'hvr-pulse-shrink' %></li>
+	<li><%= link_to "Edit Profile", edit_tenant_registration_path, class: 'hvr-pulse-shrink' %></li>
+</div>  
+<% end %>

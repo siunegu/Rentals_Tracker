@@ -1,12 +1,12 @@
 
-<div id="main-page-bg">
-  <div id="main-page-color">
-    <div class="container">
+<div class="main-page-bg">
+  <div class="main-page-color">
+
     <div class="row">
       <% if !tenant_signed_in? || !landlord_signed_in? %>
   
       <h1>Welcome to INNKEEPER!</h1>
-      <h2>Landlords is an online subscription management service for renting and tenancy.</h2>
+      <h3>Landlords is an online subscription management service for renting and tenancy.</h3>
 
 
       <% elsif landlord_signed_in? %>
@@ -38,12 +38,17 @@
       <% else %>		
 
       <h1>Welcome to INNKEEPER!</h1>
-      <h2>Landlords is an online subscription management service for renting and tenancy.</h2>
+      <h3>Landlords is an online subscription management service for renting and tenancy.</h3>
 
       <% end %>
 
-
+      <div class="credits-home">  
+          <a href="https://github.com/siunegu" class="hvr-bounce-in"><i class="fa fa-github-square fa-footer-icon"></i></a>
+          <a href="https://twitter.com/Siunegu" class="hvr-bounce-in"><i class="fa fa-twitter-square fa-footer-icon"></i></a>
+          <a href="https://www.linkedin.com/in/siunegu" class="hvr-bounce-in"><i class="fa fa-linkedin-square fa-footer-icon"></i></a>
+          <p>Made by <a href="http://siunegu.github.io">Eugene Lai</a> © Innkeeper 2015</p></div>
+      </div>      
     </div>
-    </div>
+    
   </div>
 </div>

@@ -48,8 +48,61 @@ a:hover {
 }
 
 /*******************************
-           Navbar
+           Navigation
 *******************************/
+
+// Navbar Login buttons //
+
+ul.navbar-new-session {
+  display: inline-flex;
+  position: relative;
+  top: 6px;
+  right: 100px;
+  float: right;
+  li {
+    padding-left: 10px;
+    list-style: none;
+  }
+}
+
+.btn-new-session {
+  width: 100%;
+  margin-bottom: 1px;
+  text-decoration: none;
+  display: block;
+  position: relative;
+  padding: 4px 30px;
+  height: 40px;
+  background: #FF9933;
+
+  line-height: 30px;
+  
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+
+  border: 1px solid rgba(0, 0, 0, 0.2);
+
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  
+
+  transition: all 0.5s ease;
+}
+
+.btn-new-session:hover {
+  color: #f7f7f7 !important;
+  background: #d43f3a !important;
+  border: 1px solid rgba(0, 0, 0, 0.4);  
+}
 
 
 // Gear Menu 
@@ -117,22 +170,35 @@ a:hover {
 *******************************/
 
 
-#main-page-color {
+.main-page-color {
+  padding: 15%;
+  overflow: hidden;
+  height: 100%;
+  h1 {
+    font-weight: 400;
+  }
+  h3 {
+    font-weight: 100;
+  }
+}
+
+.main-page-color:after {
   z-index: -1;
   height: 100%;
   width: 100%;
+  content: " ";
   top: 0;
-  padding: 15%;
-  overflow: hidden;
+  left: 0;
   position: absolute;
   background-color: rgba(86, 61, 124, 0.95);
 }
 
-#main-page-bg {
+.main-page-bg {
   color: #FFF;
+  height: 100vh;
 }
 
-#main-page-bg:before {
+.main-page-bg:before {
   height: 100%;
   z-index: -1;
   background-image: url('<%= asset_path("fontpage-bg.jpg") %> ');
@@ -146,25 +212,14 @@ a:hover {
   float: left;  
 }
 
+.credits-home {
+  text-align: center;
+  margin: 280px auto 0;
+  a {
+    color: #FFA82E;
+  }
+}
 
-.hvr-bounce-in {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-transition-duration: 0.5s;
-  transition-duration: 0.5s;
-}
-.hvr-bounce-in:hover, .hvr-bounce-in:focus, .hvr-bounce-in:active {
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
-  -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
-  transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
-}
 
 /*******************************
            Buttons 

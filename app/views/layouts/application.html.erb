@@ -23,7 +23,8 @@
   <div class="cbp-spmenu-push" id="main-content">
 
     <%= render 'layouts/header' %>
-
+    <%= render 'layouts/slidein' %>
+    
     <div class="container">
       <% flash.each do |name, msg| %>
         <% if msg.is_a?(String) %>
@@ -38,9 +39,10 @@
     <div id="content">
       <%= yield %>
     </div>
+
   </div>
 </div>
-<%= render 'layouts/footer' %>
+
 
 </body>
 </html>

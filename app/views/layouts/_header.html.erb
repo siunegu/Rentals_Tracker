@@ -9,47 +9,35 @@
     </button>
   </div> -->
 
-    <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
-      <br>
-      <ul>
-        <li><%= link_to "My Properties", landlord_my_properties_path %></li>
-        <li><%= link_to "My Mailer", landlord_messages_path %></li>
-        <li><%= link_to "Edit Profile", edit_landlord_registration_path %></li>
-        <li><%= link_to "Log Out", destroy_landlord_session_path, method: :delete %></li>
-      </ul>  
-    </div>  
+
 
   <!-- Collect the nav links, forms, and other content for toggling -->
 
 
-      <a class="navbar-brand" href="/"><i class="fa fa-home"></i> INNKEEPER</a>
+  <a class="navbar-brand" href="/"><i class="fa fa-home"></i> INNKEEPER</a>
 
-      <% if landlord_signed_in? %>  
+  <% if landlord_signed_in? %>  
 
-        <a href="#">
-          <i id="showLeftPush" class="fa fa-cogs fa-big-icon"></i>
-        </a>
+  <a href="#">
+    <i id="showLeftPush" class="fa fa-cogs fa-big-icon"></i>
+  </a>
+  
+  <li class="navbar-welcome-user">Welcome <%= current_landlord.name %>!</li>           
+  
 
-        <li class="navbar-welcome-user">Welcome <%= current_landlord.name %>!</li>           
+  <% elsif tenant_signed_in? %>    
+  <a href="#">
+    <i id="showLeftPush" class="fa fa-cogs fa-big-icon"></i>
+  </a>
+  <li class="navbar-welcome-user">Welcome <%= current_tenant.name %>!</li>           
 
-        <ul class="dropdown-menu">
-          <li><%= link_to "My Properties", landlord_my_properties_path %></li>
-          <li><%= link_to "My Mailer", landlord_messages_path %></li>
-          <li><%= link_to "Pending ", pending_applications_path %></li>
-          <li><%= link_to "Edit Profile", edit_landlord_registration_path %></li>
-          <li><%= link_to "Log Out", destroy_landlord_session_path, method: :delete %></li>
-        </ul>
 
-      <% elsif tenant_signed_in? %>    
-        <li class="navbar-welcome-user">Welcome <%= current_tenant.name %>!</li>           
-        <li><%= link_to "My Properties", tenant_my_properties_path %></li>  
-        <li><%= link_to "My Applications", tenant_applications_path %></li>  
-        <li><%= link_to "Log Out", destroy_tenant_session_path, method: :delete %></li>
-        <li><%= link_to "Edit Profile", edit_tenant_registration_path, class: 'btn btn-nav-edit' %></li>
-      <% elsif !landlord_signed_in? || !tenant_signed_in? %>        
-        <li><%= link_to "Log In as Landlord", new_landlord_session_path %></li>
-        <li><%= link_to "Log In as Tenant", new_tenant_session_path %></li>    
-      <% end %>        
+  <% elsif !landlord_signed_in? || !tenant_signed_in? %>    
+  <ul class="navbar-new-session">
+    <li><%= link_to "I'm a Landlord", new_landlord_session_path, class: 'btn btn-new-session' %></li>
+    <li><%= link_to "I'm a Tenant", new_tenant_session_path, class: 'btn btn-new-session' %></li>    
+  </ul>    
+  <% end %>        
 
 
 </nav>
