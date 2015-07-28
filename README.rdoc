@@ -1,9 +1,12 @@
 == Rental Tracker
 
-login with **admin@example.com**
-password is **password**
+### Logging in and viewing 
 
+#### Login as Landlord or Admin
+login with **admin@example.com**, or **landlord@example.com**
+
+#### Login as Tenant
 login as a tenant **tenant@example.com**
-password is **password**
+passwords for all test users are **password**
 
 
